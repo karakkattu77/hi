@@ -66,3 +66,5 @@ npm run dev
 ```
 
 Serves on port 5000.
+
+<!-- Last touched via Cowork: 2026-05-14 -->
