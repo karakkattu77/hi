@@ -400,62 +400,19 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Protest sign cutout collage — bottom-right of hero, slight rotations */}
-        <div className="hidden lg:block absolute bottom-16 right-8 xl:right-16 z-15 w-[340px] h-[300px] pointer-events-none" aria-hidden="true">
-          {/* Sign 1 — "PEOPLE OVER PROFIT. NO DATA CENTER HERE." (largest, top-right) */}
-          <div 
-            className="absolute top-0 right-4 w-[180px] p-4 shadow-2xl" 
-            style={{ 
-              background: "#f4ead8", 
-              transform: "rotate(4deg)", 
-              boxShadow: "0 12px 30px -8px rgba(0,0,0,0.6), 0 4px 8px -2px rgba(0,0,0,0.4)",
-              fontFamily: "'Architects Daughter', cursive",
-              color: "#1a1a1a",
-              lineHeight: 0.95
-            }}
-          >
-            <div className="text-[28px] font-bold leading-[0.92]">PEOPLE<br/>OVER<br/>PROFIT.</div>
-            <div className="text-[14px] mt-2 leading-tight">NO DATA<br/>CENTER<br/>HERE.</div>
-          </div>
-
-          {/* Sign 2 — "BRIGHTWOOD UNITED" (smaller, bottom-left, more rotated) */}
-          <div 
-            className="absolute bottom-4 left-0 w-[150px] p-3.5" 
-            style={{ 
-              background: "#ece2cf", 
-              transform: "rotate(-7deg)", 
-              boxShadow: "0 8px 24px -6px rgba(0,0,0,0.55), 0 3px 6px -2px rgba(0,0,0,0.35)",
-              fontFamily: "'Architects Daughter', cursive",
-              color: "#1a1a1a"
-            }}
-          >
-            <div className="text-[18px] font-bold leading-tight">BRIGHTWOOD</div>
-            <div className="text-[18px] font-bold leading-tight">UNITED</div>
-            <div className="text-[12px] mt-2.5 relative inline-block">
-              DATA CENTER
-              {/* hand-drawn X strikethrough */}
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 20" preserveAspectRatio="none">
-                <line x1="5" y1="3" x2="95" y2="18" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round" />
-                <line x1="95" y1="3" x2="5" y2="18" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-            </div>
-          </div>
-
-          {/* Sign 3 — "NO DATA" partial sign, peeking from bottom-right */}
-          <div 
-            className="absolute bottom-8 right-0 w-[120px] p-3" 
-            style={{ 
-              background: "#f7f1e1", 
-              transform: "rotate(8deg) translateY(20px)", 
-              boxShadow: "0 10px 26px -8px rgba(0,0,0,0.5)",
-              fontFamily: "'Architects Daughter', cursive",
-              color: "#1a1a1a",
-              clipPath: "inset(0 0 30% 0)"
-            }}
-          >
-            <div className="text-[42px] font-bold leading-[0.85]">NO<br/>DATA</div>
-          </div>
-        </div>
+        {/* Real protester cutout photo — bottom-right of hero, B&W cutout against dark green */}
+        <img
+          src="/protesters.png"
+          alt="Community members holding protest signs reading 'People over profit. No data center here.' and 'Brightwood United.'"
+          className="hidden lg:block absolute bottom-0 right-0 z-10 pointer-events-none"
+          style={{
+            width: "min(46vw, 720px)",
+            maxHeight: "80vh",
+            objectFit: "contain",
+            objectPosition: "bottom right",
+            filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.45)) brightness(1.08) contrast(1.05)"
+          }}
+        />
 
         {/* Minimal scroll cue */}
         <button 
