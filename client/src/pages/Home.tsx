@@ -315,7 +315,7 @@ export default function Home() {
       />
 
       {/* Hero — Habitline-style: centered, sans, floating cards, dark+gold */}
-      <section className="relative min-h-[88vh] flex flex-col items-center justify-center px-6 sm:px-10 lg:px-16 overflow-hidden">
+      <section className="relative min-h-[88vh] flex flex-col justify-center px-6 sm:px-10 lg:px-16 overflow-hidden">
         {/* Painterly green hero background */}
         <div 
           className="absolute inset-0" 
@@ -346,24 +346,20 @@ export default function Home() {
           <rect width="100%" height="100%" filter="url(#hero-grain)"/>
         </svg>
 
-        {/* Centered hero content */}
-        <div className="relative z-10 max-w-4xl mx-auto text-center py-20 lg:py-24">
+        {/* Hero composition — text LEFT, protester photo RIGHT */}
+        <div className="relative z-10 max-w-7xl mx-auto py-16 lg:py-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-y-12 gap-x-10 items-center">
+          <div className="lg:col-span-7 text-center lg:text-left">
           <h1 
-            className="text-[52px] sm:text-[68px] md:text-[80px] lg:text-[96px] xl:text-[108px] leading-[1.02] tracking-[-0.04em] mb-7" 
+            className="text-[48px] sm:text-[60px] md:text-[72px] lg:text-[80px] xl:text-[88px] leading-[1.02] tracking-[-0.04em] mb-7" 
             style={{ fontFamily: "'Manrope', system-ui, sans-serif", color: "#f0e8d0", fontWeight: 800 }}
           >
             <span className="hero-line hero-line-1 block">Is{" "}
-              <span style={{ position: "relative", display: "inline-block" }}>
-                <span style={{ color: GOLD, position: "relative", zIndex: 1 }}>Big&nbsp;Data</span>
-                <svg aria-hidden="true" viewBox="0 0 220 100" preserveAspectRatio="none" style={{ position: "absolute", left: "-6%", top: "-14%", width: "112%", height: "132%", pointerEvents: "none", zIndex: 0, overflow: "visible" }}>
-                  <path d="M 28,58 C 14,40 34,18 76,12 C 124,6 178,10 200,32 C 218,52 204,80 158,90 C 110,98 50,95 24,80 C 8,68 12,46 30,40" stroke={GOLD} strokeWidth="2.6" strokeLinecap="round" fill="none" opacity="0.85" />
-                </svg>
-              </span>{" "}
+              <span style={{ color: GOLD }}>Big&nbsp;Data</span>{" "}
               coming</span>
             <span className="hero-line hero-line-2 block">to your <span style={{ color: GOLD }}>backyard</span>?</span>
           </h1>
 
-          <div className="hero-rail flex items-start gap-2.5 max-w-2xl mx-auto mb-10">
+          <div className="hero-rail flex items-start gap-2.5 max-w-xl mx-auto lg:mx-0 mb-10">
             <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style={{ flexShrink: 0, marginTop: 6, opacity: 0.85 }}>
               <g stroke={GOLD} strokeWidth="1.8" strokeLinecap="round">
                 <line x1="12" y1="3" x2="12" y2="21" />
@@ -373,16 +369,16 @@ export default function Home() {
               </g>
             </svg>
             <p className="text-[16px] sm:text-[18px] leading-[1.6] text-left" style={{ color: "rgba(232,219,181,0.78)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
-            Big Tech is building hundreds of AI data centers — powered by fossil fuels, draining water supplies, and displacing communities. All without your consent.{" "}
+            Big Tech is building hundreds of AI data centers, powered by fossil fuels, draining water supplies, and displacing communities. All without your consent.{" "}
             <strong style={{ color: "#f0e8d0", fontWeight: 600 }}>Together, we can stop it.</strong>
             </p>
           </div>
 
-          <div className="hero-rail flex flex-wrap items-center justify-center gap-3">
+          <div className="hero-rail flex flex-wrap items-center justify-center lg:justify-start gap-3">
             <button 
               onClick={() => scrollTo(mapSectionRef)}
-              className="shimmer-cta inline-flex items-center gap-2 px-7 py-4 transition-all hover:opacity-90" 
-              style={{ background: GOLD, color: FOREST, borderRadius: "999px", fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 600, fontSize: "15px" }}
+              className="inline-flex items-center gap-2 px-7 py-4 transition-all hover:opacity-90" 
+              style={{ background: GOLD, color: FOREST, borderRadius: "4px", fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 600, fontSize: "15px" }}
               data-testid="button-hero-map"
             >
               Find Projects Near You
@@ -391,28 +387,25 @@ export default function Home() {
             <button 
               onClick={() => scrollTo(federalRef)}
               className="inline-flex items-center gap-2 px-7 py-4 transition-all hover:bg-white/[0.04] border" 
-              style={{ background: "transparent", color: "#f0e8d0", borderColor: "rgba(201,162,39,0.45)", borderRadius: "999px", fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 600, fontSize: "15px" }}
+              style={{ background: "transparent", color: "#f0e8d0", borderColor: "rgba(201,162,39,0.55)", borderRadius: "4px", fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 600, fontSize: "15px" }}
               data-testid="button-hero-federal"
             >
               Take Nationwide Action
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-        </div>
+          </div>
 
-        {/* Real protester cutout photo — bottom-right of hero, B&W cutout against dark green */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end items-center"> — bottom-right of hero, B&W cutout against dark green */}
         <img
-          src="/protesters.png"
-          alt="Community members holding protest signs reading 'People over profit. No data center here.' and 'Brightwood United.'"
-          className="hidden lg:block absolute bottom-0 right-0 z-10 pointer-events-none"
-          style={{
-            width: "min(46vw, 720px)",
-            maxHeight: "80vh",
-            objectFit: "contain",
-            objectPosition: "bottom right",
-            filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.45)) brightness(1.08) contrast(1.05)"
-          }}
-        />
+            src="/protesters.png"
+            alt="Community members holding protest signs reading 'People over profit. No data center here.' and 'Brightwood United.'"
+            className="w-full max-w-[640px] h-auto"
+            style={{
+              filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.45)) brightness(1.08) contrast(1.05)"
+            }}
+          />
+          </div>
 
         {/* Minimal scroll cue */}
         <button 
@@ -469,7 +462,7 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-x-4 sm:gap-x-6">
               {[STATS[0], STATS[1], STATS[2]].map((stat, i) => (
                 <div key={i} className={i > 0 ? "pl-4 sm:pl-6 border-l" : ""} style={i > 0 ? { borderColor: "rgba(201,162,39,0.18)" } : {}} data-testid={`stat-item-${i}`}>
-                  <div className="text-[40px] sm:text-[48px] lg:text-[56px] leading-[0.95] mb-2 tracking-[-0.035em]" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: GOLD, fontWeight: 500 }}>
+                  <div className="text-[40px] sm:text-[48px] lg:text-[56px] leading-[0.95] mb-2 tracking-[-0.04em]" style={{ fontFamily: "'Manrope', system-ui, sans-serif", color: GOLD, fontWeight: 800 }}>
                     {stat.value}
                   </div>
                   <div className="text-[12px] sm:text-[13px] leading-[1.45]" style={{ color: "rgba(232,219,181,0.7)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
