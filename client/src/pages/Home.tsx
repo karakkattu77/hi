@@ -331,24 +331,24 @@ export default function Home() {
           </svg>
         </div>
         
-        <div className="relative z-10 max-w-6xl mx-auto space-y-7 -mt-10 px-2">
-          <div className="font-tech text-[11px] sm:text-xs inline-flex items-center gap-3" style={{ color: GOLD }}>
-            <span style={{ display: "inline-block", width: 28, height: 1, background: GOLD, opacity: 0.6 }} />
-            Stop Big Data — National Campaign
-            <span style={{ display: "inline-block", width: 28, height: 1, background: GOLD, opacity: 0.6 }} />
+        <div className="relative z-10 max-w-5xl mx-auto space-y-8 -mt-10 px-2">
+          <div className="font-tech text-[11px] inline-flex items-center gap-3" style={{ color: GOLD, opacity: 0.85 }}>
+            <span style={{ display: "inline-block", width: 24, height: 1, background: GOLD, opacity: 0.55 }} />
+            Stop Big Data — A National Campaign
+            <span style={{ display: "inline-block", width: 24, height: 1, background: GOLD, opacity: 0.55 }} />
           </div>
-          <h1 className="font-display text-[68px] sm:text-[112px] lg:text-[148px] leading-[0.88]" style={{ color: "#f0e8d0", letterSpacing: "0.005em" }}>
-            Is <span style={{ color: GOLD, position: "relative", display: "inline-block" }}>Big&nbsp;Data<span style={{ position: "absolute", left: 0, right: 0, bottom: "0.06em", height: "0.08em", background: GOLD, opacity: 0.22 }} /></span><br />Coming To<br />Your Backyard?
+          <h1 className="text-[56px] sm:text-[88px] lg:text-[120px] leading-[0.96] tracking-[-0.025em]" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}>
+            Is <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 400 }}>Big&nbsp;Data</em><br />Coming To<br />Your Backyard?
           </h1>
-          <p className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: "rgba(232,219,181,0.78)" }}>
-            Big Tech is building hundreds of AI data centers powered by fossil fuels, draining water supplies, and displacing communities all without your consent.{" "}
-            <strong style={{ color: "#e8dbb5", fontWeight: 600 }}>Together, we can stop it.</strong>
+          <p className="text-base sm:text-lg max-w-2xl mx-auto leading-[1.65]" style={{ color: "rgba(232,219,181,0.78)" }}>
+            Big Tech is building hundreds of AI data centers powered by fossil fuels, draining water supplies, and displacing communities — all without your consent.{" "}
+            <strong style={{ color: "#e8dbb5", fontWeight: 500 }}>Together, we can stop it.</strong>
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-            <Button size="lg" className="text-base px-8 font-tech text-[13px]" style={{ background: GOLD, color: FOREST, letterSpacing: "0.12em" }} onClick={() => scrollTo(mapSectionRef)} data-testid="button-hero-map">
+            <Button size="lg" className="text-base px-8" style={{ background: GOLD, color: FOREST }} onClick={() => scrollTo(mapSectionRef)} data-testid="button-hero-map">
               Find Projects Near You <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-            <Button size="lg" variant="outline" className="text-base px-8 font-tech text-[13px]" style={{ borderColor: "rgba(201,162,39,0.5)", color: "#e8dbb5", letterSpacing: "0.12em" }} onClick={() => scrollTo(federalRef)} data-testid="button-hero-federal">
+            <Button size="lg" variant="outline" className="text-base px-8" style={{ borderColor: "rgba(201,162,39,0.45)", color: "#e8dbb5" }} onClick={() => scrollTo(federalRef)} data-testid="button-hero-federal">
               Take Nationwide Action
             </Button>
           </div>
@@ -378,13 +378,56 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Field Report — editorial manifesto */}
+      <section className="relative py-24 px-4 border-y" style={{ borderColor: "rgba(201,162,39,0.12)" }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-8 mb-12 items-start">
+            <div className="font-tech text-[11px] flex items-center gap-3 pt-3" style={{ color: GOLD, opacity: 0.85 }}>
+              <span style={{ display: "inline-block", width: 24, height: 1, background: GOLD, opacity: 0.55 }} />
+              Field Report
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl tracking-[-0.02em] leading-[1.08]" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 500, color: "#f0e8d0" }}>
+              Quietly, in a thousand small towns, the largest fossil-fueled build-out of the decade is <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 400 }}>happening</em>.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5 text-base sm:text-[17px] leading-[1.7]" style={{ color: "rgba(232,219,181,0.78)" }}>
+            <p>
+              Microsoft, Amazon, Meta, xAI. Each new gigawatt of AI compute means gas plants pulled out of retirement, rural aquifers drained for cooling, and electricity bills that climb for everyone except the tenants.
+            </p>
+            <p>
+              These projects are negotiated behind NDAs, approved in zoning meetings nobody attends, and built before the news cycle catches up. They want it to feel inevitable.{" "}
+              <span style={{ color: "#e8dbb5", fontWeight: 500 }}>It isn't.</span>
+            </p>
+          </div>
+
+          <div className="relative my-20 max-w-3xl mx-auto text-center px-4">
+            <div className="font-tech text-[10px] mb-6" style={{ color: GOLD, opacity: 0.7 }}>
+              — From the Field
+            </div>
+            <p className="text-2xl sm:text-3xl lg:text-[40px] tracking-[-0.01em] leading-[1.2]" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontWeight: 400, color: "#f0e8d0" }}>
+              "The only thing harder than building a coal plant in 2026 is building a data center near people who know what one is."
+            </p>
+          </div>
+
+          <div className="text-center max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg mb-6" style={{ color: "rgba(232,219,181,0.78)" }}>
+              Find the project nearest you. Take an action that goes straight to the people approving it.
+            </p>
+            <Button size="lg" variant="outline" className="text-base px-8" style={{ borderColor: "rgba(201,162,39,0.45)", color: "#e8dbb5" }} onClick={() => scrollTo(mapSectionRef)} data-testid="button-fieldreport-map">
+              Open the Map <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Map Section */}
       <section ref={mapSectionRef} id="map" className="py-14 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="mb-6">
             <div className="font-tech text-[11px] mb-3" style={{ color: GOLD }}>Interactive Map</div>
-            <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl text-foreground mb-3" style={{ letterSpacing: "0.005em" }}>
-              AI Data Center Projects
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-3 tracking-[-0.02em]" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 500, color: "#f0e8d0" }}>
+              AI Data Center <em style={{ fontStyle: "italic", color: GOLD, fontWeight: 400 }}>Projects</em>
             </h2>
             <p className="text-muted-foreground max-w-2xl">
               Click any gold marker to see details about the project and take targeted digital actions to fight it.
@@ -540,8 +583,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-10 text-center max-w-3xl mx-auto">
             <div className="font-tech text-[11px] mb-3" style={{ color: GOLD }}>National Campaign</div>
-            <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl text-foreground mb-4" style={{ letterSpacing: "0.005em" }}>
-              Demand Federal Oversight
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-4 tracking-[-0.02em]" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 500, color: "#f0e8d0" }}>
+              Demand <em style={{ fontStyle: "italic", color: GOLD, fontWeight: 400 }}>Federal Oversight</em>
             </h2>
             <p className="text-muted-foreground leading-relaxed">
               Data centers currently operate in a regulatory vacuum. Join thousands of Americans demanding transparency, water protections, and clean energy standards from our leaders.
@@ -616,8 +659,8 @@ export default function Home() {
       <section className="py-20 px-4 text-center relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,162,39,0.06) 0%, transparent 70%)" }} />
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="font-display text-6xl sm:text-7xl lg:text-8xl mb-4" style={{ color: "#e8dbb5", letterSpacing: "0.005em" }}>
-            Every Action Counts.<br /><span style={{ color: GOLD }}>Start Now.</span>
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl mb-4 tracking-[-0.02em]" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 500, color: "#e8dbb5" }}>
+            Every Action Counts.<br /><em style={{ color: GOLD, fontStyle: "italic", fontWeight: 400 }}>Start Now.</em>
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
             Governments and corporations respond to organized pressure. Your email, your signature, your call can be the difference between a new gas plant and a community-powered future. Every action you take here goes directly to the decision-makers.
