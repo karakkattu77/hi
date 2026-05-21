@@ -14,8 +14,8 @@ import {
   type DatacenterProject, type DatacenterAction, type NationwideCategory 
 } from "@/data/datacenters";
 
-const GOLD = "#c9a227";
-const FEATURED_GOLD = "#d4af37";
+const GOLD = "#d4dc35";
+const FEATURED_GOLD = "#e2eb3c";
 const FOREST = "#101910";
 const ACTIONS_URL = "https://app.chilli.club/causes/3c29d439-dcc8-4f00-ac9f-5dbac975836f";
 const DONATE_URL = "https://app.chilli.club/memberships/51f003f6-1506-4275-8dc9-c73119e84cc7/flow";
@@ -166,10 +166,10 @@ function ProjectPanel({ project, onClose }: { project: DatacenterProject; onClos
   return (
     <div 
       className="absolute top-0 right-0 h-full w-full max-w-[420px] overflow-y-auto z-[1000] flex flex-col" 
-      style={{ background: FOREST, borderLeft: "1px solid rgba(201,162,39,0.15)", boxShadow: "-8px 0 40px rgba(0,0,0,0.9)" }}
+      style={{ background: FOREST, borderLeft: "1px solid rgba(212,220,53,0.15)", boxShadow: "-8px 0 40px rgba(0,0,0,0.9)" }}
       data-testid="panel-project"
     >
-      <div className="sticky top-0 z-10 border-b p-4 flex items-start justify-between gap-3" style={{ background: FOREST, borderColor: "rgba(201,162,39,0.15)" }}>
+      <div className="sticky top-0 z-10 border-b p-4 flex items-start justify-between gap-3" style={{ background: FOREST, borderColor: "rgba(212,220,53,0.15)" }}>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap mb-1">
             <StatusBadge status={project.status} />
@@ -192,7 +192,7 @@ function ProjectPanel({ project, onClose }: { project: DatacenterProject; onClos
         <p className="text-sm text-foreground/80 leading-relaxed">{project.description}</p>
         <div className="grid grid-cols-3 gap-2">
           {[
-            { icon: Zap, color: "#c9a227", label: "MW Power", value: project.power_mw.toLocaleString() },
+            { icon: Zap, color: GOLD, label: "MW Power", value: project.power_mw.toLocaleString() },
             { icon: Droplets, color: "#60a5fa", label: "Gal/Day", value: `${(project.water_gallons_per_day / 1_000_000).toFixed(1)}M` },
             { icon: Flame, color: "#fb923c", label: "Energy", value: project.energy_source.split("(")[0].trim() },
           ].map(({ icon: Icon, color, label, value }) => (
@@ -226,7 +226,7 @@ function ProjectPanel({ project, onClose }: { project: DatacenterProject; onClos
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="block rounded-md p-3.5 hover-elevate group"
-                style={{ background: "rgba(201,162,39,0.06)", border: "1px solid rgba(201,162,39,0.2)" }}
+                style={{ background: "rgba(212,220,53,0.06)", border: "1px solid rgba(212,220,53,0.2)" }}
                 data-testid={`action-link-${action.id}`}
               >
                 <div className="flex items-start justify-between gap-2 mb-1.5">
@@ -337,7 +337,7 @@ export default function Home() {
             Stop Big Data — A National Campaign
             <span style={{ display: "inline-block", width: 24, height: 1, background: GOLD, opacity: 0.55 }} />
           </div>
-          <h1 className="text-[56px] sm:text-[88px] lg:text-[120px] leading-[0.96] tracking-[-0.025em]" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}>
+          <h1 className="text-[56px] sm:text-[88px] lg:text-[120px] leading-[0.96] tracking-[-0.025em]" style={{ fontFamily: "'Newsreader', 'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}>
             Is <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 400 }}>Big&nbsp;Data</em><br />Coming To<br />Your Backyard?
           </h1>
           <p className="text-base sm:text-lg max-w-2xl mx-auto leading-[1.65]" style={{ color: "rgba(232,219,181,0.78)" }}>
@@ -348,7 +348,7 @@ export default function Home() {
             <Button size="lg" className="text-base px-8" style={{ background: GOLD, color: FOREST }} onClick={() => scrollTo(mapSectionRef)} data-testid="button-hero-map">
               Find Projects Near You <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-            <Button size="lg" variant="outline" className="text-base px-8" style={{ borderColor: "rgba(201,162,39,0.45)", color: "#e8dbb5" }} onClick={() => scrollTo(federalRef)} data-testid="button-hero-federal">
+            <Button size="lg" variant="outline" className="text-base px-8" style={{ borderColor: "rgba(212,220,53,0.45)", color: "#e8dbb5" }} onClick={() => scrollTo(federalRef)} data-testid="button-hero-federal">
               Take Nationwide Action
             </Button>
           </div>
@@ -365,7 +365,7 @@ export default function Home() {
       </section>
 
       {/* Stats bar */}
-      <section className="border-y py-8 px-4" style={{ background: "rgba(201,162,39,0.05)", borderColor: "rgba(201,162,39,0.2)" }}>
+      <section className="border-y py-8 px-4" style={{ background: "rgba(212,220,53,0.05)", borderColor: "rgba(212,220,53,0.2)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
             {STATS.map((stat, i) => (
@@ -378,55 +378,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Field Report — editorial manifesto */}
-      <section className="relative py-24 px-4 border-y" style={{ borderColor: "rgba(201,162,39,0.12)" }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-8 mb-12 items-start">
-            <div className="font-tech text-[11px] flex items-center gap-3 pt-3" style={{ color: GOLD, opacity: 0.85 }}>
-              <span style={{ display: "inline-block", width: 24, height: 1, background: GOLD, opacity: 0.55 }} />
-              Field Report
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl tracking-[-0.02em] leading-[1.08]" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 500, color: "#f0e8d0" }}>
-              Quietly, in a thousand small towns, the largest fossil-fueled build-out of the decade is <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 400 }}>happening</em>.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5 text-base sm:text-[17px] leading-[1.7]" style={{ color: "rgba(232,219,181,0.78)" }}>
-            <p>
-              Microsoft, Amazon, Meta, xAI. Each new gigawatt of AI compute means gas plants pulled out of retirement, rural aquifers drained for cooling, and electricity bills that climb for everyone except the tenants.
-            </p>
-            <p>
-              These projects are negotiated behind NDAs, approved in zoning meetings nobody attends, and built before the news cycle catches up. They want it to feel inevitable.{" "}
-              <span style={{ color: "#e8dbb5", fontWeight: 500 }}>It isn't.</span>
-            </p>
-          </div>
-
-          <div className="relative my-20 max-w-3xl mx-auto text-center px-4">
-            <div className="font-tech text-[10px] mb-6" style={{ color: GOLD, opacity: 0.7 }}>
-              — From the Field
-            </div>
-            <p className="text-2xl sm:text-3xl lg:text-[40px] tracking-[-0.01em] leading-[1.2]" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontWeight: 400, color: "#f0e8d0" }}>
-              "The only thing harder than building a coal plant in 2026 is building a data center near people who know what one is."
-            </p>
-          </div>
-
-          <div className="text-center max-w-2xl mx-auto">
-            <p className="text-base sm:text-lg mb-6" style={{ color: "rgba(232,219,181,0.78)" }}>
-              Find the project nearest you. Take an action that goes straight to the people approving it.
-            </p>
-            <Button size="lg" variant="outline" className="text-base px-8" style={{ borderColor: "rgba(201,162,39,0.45)", color: "#e8dbb5" }} onClick={() => scrollTo(mapSectionRef)} data-testid="button-fieldreport-map">
-              Open the Map <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* Map Section */}
       <section ref={mapSectionRef} id="map" className="py-14 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="mb-6">
             <div className="font-tech text-[11px] mb-3" style={{ color: GOLD }}>Interactive Map</div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-3 tracking-[-0.02em]" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 500, color: "#f0e8d0" }}>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-3 tracking-[-0.02em]" style={{ fontFamily: "'Newsreader', 'Playfair Display', Georgia, serif", fontWeight: 500, color: "#f0e8d0" }}>
               AI Data Center <em style={{ fontStyle: "italic", color: GOLD, fontWeight: 400 }}>Projects</em>
             </h2>
             <p className="text-muted-foreground max-w-2xl">
@@ -434,7 +391,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="relative rounded-md overflow-hidden border" style={{ height: "65vh", minHeight: "400px", borderColor: "rgba(201,162,39,0.2)" }}>
+          <div className="relative rounded-md overflow-hidden border" style={{ height: "65vh", minHeight: "400px", borderColor: "rgba(212,220,53,0.2)" }}>
             <MapContainer 
               center={[39.5, -98.35]} 
               zoom={4} 
@@ -552,8 +509,8 @@ export default function Home() {
             )}
 
             {/* Legend */}
-            <div className="absolute bottom-4 left-4 z-[500] rounded-md px-3 py-2.5 text-[10px] space-y-1.5 border" style={{ background: "rgba(7,14,7,0.9)", borderColor: "rgba(201,162,39,0.2)" }}>
-              <div className="font-mono uppercase tracking-widest mb-2" style={{ color: "rgba(201,162,39,0.6)" }}>Legend</div>
+            <div className="absolute bottom-4 left-4 z-[500] rounded-md px-3 py-2.5 text-[10px] space-y-1.5 border" style={{ background: "rgba(7,14,7,0.9)", borderColor: "rgba(212,220,53,0.2)" }}>
+              <div className="font-mono uppercase tracking-widest mb-2" style={{ color: "rgba(212,220,53,0.6)" }}>Legend</div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full inline-block flex-shrink-0" style={{ background: FEATURED_GOLD, border: `1.5px solid ${FEATURED_GOLD}`, boxShadow: `0 0 8px ${FEATURED_GOLD}88` }} />
                 <span style={{ color: "rgba(232,219,181,0.8)" }}>Featured project (click for actions)</span>
@@ -579,11 +536,11 @@ export default function Home() {
       </section>
 
       {/* Nationwide Actions */}
-      <section ref={federalRef} id="nationwide-actions" className="py-20 px-4 bg-black/20 border-t" style={{ borderColor: "rgba(201,162,39,0.15)" }}>
+      <section ref={federalRef} id="nationwide-actions" className="py-20 px-4 bg-black/20 border-t" style={{ borderColor: "rgba(212,220,53,0.15)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-10 text-center max-w-3xl mx-auto">
             <div className="font-tech text-[11px] mb-3" style={{ color: GOLD }}>National Campaign</div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-4 tracking-[-0.02em]" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 500, color: "#f0e8d0" }}>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl mb-4 tracking-[-0.02em]" style={{ fontFamily: "'Newsreader', 'Playfair Display', Georgia, serif", fontWeight: 500, color: "#f0e8d0" }}>
               Demand <em style={{ fontStyle: "italic", color: GOLD, fontWeight: 400 }}>Federal Oversight</em>
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -601,8 +558,8 @@ export default function Home() {
                   onClick={() => setActiveCategory(ctg.id)}
                   className="flex items-center gap-2 px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider transition-all border"
                   style={{ 
-                    background: activeCategory === ctg.id ? "rgba(201,162,39,0.12)" : "transparent",
-                    borderColor: activeCategory === ctg.id ? GOLD : "rgba(201,162,39,0.25)",
+                    background: activeCategory === ctg.id ? "rgba(212,220,53,0.12)" : "transparent",
+                    borderColor: activeCategory === ctg.id ? GOLD : "rgba(212,220,53,0.25)",
                     color: activeCategory === ctg.id ? GOLD : "rgba(232,219,181,0.5)",
                   }}
                   data-testid={`category-tab-${ctg.id}`}
@@ -615,7 +572,7 @@ export default function Home() {
           </div>
 
           {/* Active category description */}
-          <div className="mb-6 p-4 rounded-md border" style={{ background: "rgba(201,162,39,0.06)", borderColor: "rgba(201,162,39,0.2)" }}>
+          <div className="mb-6 p-4 rounded-md border" style={{ background: "rgba(212,220,53,0.06)", borderColor: "rgba(212,220,53,0.2)" }}>
             <div className="flex items-start gap-3">
               {(() => {
                 const Icon = CATEGORY_ICONS[activeCategory];
@@ -634,11 +591,11 @@ export default function Home() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="block rounded-md p-5 hover-elevate group"
-                style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(201,162,39,0.15)" }}
+                style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(212,220,53,0.15)" }}
                 data-testid={`nationwide-action-${action.id}`}
               >
                 <div className="flex items-center gap-2 mb-3" style={{ color: GOLD }}>
-                  <div className="w-8 h-8 rounded-md flex items-center justify-center shrink-0" style={{ background: "rgba(201,162,39,0.12)", border: "1px solid rgba(201,162,39,0.25)" }}>
+                  <div className="w-8 h-8 rounded-md flex items-center justify-center shrink-0" style={{ background: "rgba(212,220,53,0.12)", border: "1px solid rgba(212,220,53,0.25)" }}>
                     <ActionTypeIcon type={action.type} />
                   </div>
                   <span className="text-xs font-mono uppercase tracking-wide"><ActionTypeLabel type={action.type} /></span>
@@ -657,9 +614,9 @@ export default function Home() {
 
       {/* Final CTA */}
       <section className="py-20 px-4 text-center relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,162,39,0.06) 0%, transparent 70%)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,220,53,0.06) 0%, transparent 70%)" }} />
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl mb-4 tracking-[-0.02em]" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 500, color: "#e8dbb5" }}>
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl mb-4 tracking-[-0.02em]" style={{ fontFamily: "'Newsreader', 'Playfair Display', Georgia, serif", fontWeight: 500, color: "#e8dbb5" }}>
             Every Action Counts.<br /><em style={{ color: GOLD, fontStyle: "italic", fontWeight: 400 }}>Start Now.</em>
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
@@ -677,7 +634,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 px-6 bg-black/40 border-t" style={{ borderColor: "rgba(201,162,39,0.1)" }}>
+      <footer className="py-16 px-6 bg-black/40 border-t" style={{ borderColor: "rgba(212,220,53,0.1)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-12 mb-12">
             {/* Left: Brand */}
@@ -718,7 +675,7 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="border-t pt-6 flex flex-wrap items-center justify-between gap-3" style={{ borderColor: "rgba(201,162,39,0.1)" }}>
+          <div className="border-t pt-6 flex flex-wrap items-center justify-between gap-3" style={{ borderColor: "rgba(212,220,53,0.1)" }}>
             <p className="text-xs text-muted-foreground">
               © 2026 Stop Big Data Campaign. Campaign actions powered by{" "}
               <a href="https://app.chilli.club" target="_blank" rel="noopener noreferrer" style={{ color: GOLD }}>Chilli Club</a>. 
