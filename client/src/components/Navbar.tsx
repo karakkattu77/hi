@@ -28,7 +28,7 @@ export default function Navbar({ links, onActNow }: NavbarProps) {
             <X className="w-5 h-5" style={{ color: FOREST }} strokeWidth={3} />
           </div>
           <span className="font-bold text-xl tracking-tight hidden sm:inline-block" style={{ color: "#e8dbb5" }}>
-            POWER<span style={{ color: GOLD }}>SHIFT</span>
+            POWER<span style={{ color: GOLD }}>SHIFT</span>PROJECT
           </span>
         </Link>
 
