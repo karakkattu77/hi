@@ -386,11 +386,11 @@ export default function Home() {
           </div>
 
           {/* Mobile-only inline photo (lg+ uses absolute below) */}
-          <div className="lg:hidden flex justify-center">
+          <div className="lg:hidden flex justify-center -mx-6 sm:-mx-10 mt-4 mb-2">
             <img
               src="/protesters.png"
               alt="Community members holding protest signs reading 'People over profit. No data center here.' and 'Brightwood United.'"
-              className="w-full max-w-[500px] h-auto"
+              className="w-full max-w-[420px] sm:max-w-[520px] h-auto"
               style={{
                 filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.45)) brightness(1.08) contrast(1.05)"
               }}
