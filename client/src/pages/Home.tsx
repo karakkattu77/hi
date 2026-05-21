@@ -175,7 +175,7 @@ function ProjectPanel({ project, onClose }: { project: DatacenterProject; onClos
             <StatusBadge status={project.status} />
             <span className="text-xs text-muted-foreground font-mono">{project.state}</span>
           </div>
-          <h2 className="text-lg font-bold leading-tight" style={{ color: "#e8dbb5", fontFamily: "'Playfair Display', serif" }} data-testid="text-project-name">
+          <h2 className="text-lg font-bold leading-tight" style={{ color: "#e8dbb5", fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif" }} data-testid="text-project-name">
             {project.name}
           </h2>
           <p className="text-sm text-muted-foreground">{project.company} · {project.location}</p>
@@ -280,7 +280,6 @@ export default function Home() {
   const [mapZoom, setMapZoom] = useState(4);
   const [activeCategory, setActiveCategory] = useState<NationwideCategory>("federal");
   
-  const federalRef = useRef<HTMLDivElement>(null);
   const mapSectionRef = useRef<HTMLDivElement>(null);
 
   const scrollTo = (ref: React.RefObject<HTMLDivElement>) => {
@@ -306,64 +305,285 @@ export default function Home() {
     <div className="min-h-screen text-foreground" style={{ background: "hsl(120,22%,8%)" }}>
       <Navbar 
         links={[
-          { label: "Nationwide Actions", action: () => scrollTo(federalRef) },
           { label: "Resource Hub", href: "/resource-hub" },
           { label: "Declaration", href: "/declaration" },
           { label: "Join Today", href: "/newsletter" },
         ]} 
-        onActNow={() => scrollTo(federalRef)} 
+        onActNow={() => scrollTo(mapSectionRef)} 
       />
 
-      {/* Hero */}
-      <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden pt-0">
-        <div className="absolute inset-0">
-          <img 
-            src="/globe-bg.png" 
-            alt="" 
-            className="w-full h-full object-cover" 
-            style={{ filter: "brightness(0.55) saturate(0.85)", transform: "scale(1.06) translateY(-4%)", transformOrigin: "top center" }} 
-          />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(7,14,7,0.3) 0%, rgba(7,14,7,0.1) 50%, rgba(7,14,7,0.9) 100%)" }} />
-        </div>
-        
-        <div className="relative z-10 max-w-5xl mx-auto space-y-7 -mt-10">
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold leading-none tracking-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#f0e8d0" }}>
-            Is <em style={{ color: GOLD, fontStyle: "italic" }}>Big Data</em> <br /> Coming To <br /> Your Backyard?
+      {/* Hero — Habitline-style: centered, sans, floating cards, dark+gold */}
+      <section className="relative min-h-[92vh] flex flex-col justify-center px-6 sm:px-10 lg:px-16 overflow-hidden">
+        {/* Painterly green hero background */}
+        <div 
+          className="absolute inset-0" 
+          style={{ 
+            background: `radial-gradient(ellipse 70% 60% at 20% 28%, hsla(95, 32%, 18%, 0.85) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 82% 18%, hsla(78, 30%, 16%, 0.7) 0%, transparent 55%), linear-gradient(165deg, hsla(108, 28%, 9%, 1) 0%, hsla(100, 30%, 5%, 1) 100%)` 
+          }} 
+        />
+        {/* Globe — full-bleed at low opacity */}
+        <img 
+          src="/globe-bg.png" 
+          alt="" 
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none" 
+          style={{ 
+            objectPosition: "center 75%",
+            opacity: 0.4,
+            filter: "saturate(0.55) brightness(0.7) contrast(1.1)",
+            mixBlendMode: "lighten"
+          }} 
+        />
+        {/* Bottom vignette */}
+        <div 
+          className="absolute inset-0 pointer-events-none" 
+          style={{ background: "linear-gradient(180deg, transparent 0%, transparent 40%, hsla(110, 30%, 4%, 0.55) 100%)" }} 
+        />
+        {/* Painterly grain overlay */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.14, mixBlendMode: "overlay" }} xmlns="http://www.w3.org/2000/svg">
+          <filter id="hero-grain"><feTurbulence type="fractalNoise" baseFrequency="0.78" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0"/></filter>
+          <rect width="100%" height="100%" filter="url(#hero-grain)"/>
+        </svg>
+
+        {/* Hero composition — text LEFT (z-20), big protester photo bottom-right absolute */}
+        <div className="relative z-20 max-w-7xl mx-auto py-12 lg:py-16 w-full grid grid-cols-1 lg:grid-cols-12 gap-y-12 gap-x-10 items-center">
+          <div className="lg:col-span-6 text-center lg:text-left">
+          <h1 
+            className="text-[44px] sm:text-[54px] md:text-[62px] lg:text-[68px] xl:text-[76px] leading-[1.04] tracking-[-0.04em] mb-6" 
+            style={{ fontFamily: "'Manrope', system-ui, sans-serif", color: "#f0e8d0", fontWeight: 800 }}
+          >
+            <span className="hero-line hero-line-1 block whitespace-nowrap">Is <span style={{ color: GOLD }}>Big&nbsp;Data</span></span>
+            <span className="hero-line hero-line-2 block whitespace-nowrap">coming&nbsp;to&nbsp;your</span>
+            <span className="hero-line hero-line-3 block whitespace-nowrap"><span style={{ color: GOLD }}>backyard</span>?</span>
           </h1>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: "rgba(232,219,181,0.75)" }}>
-            Big Tech is building hundreds of AI data centers powered by fossil fuels, draining water supplies, and displacing communities all without your consent.{" "}
-            <strong style={{ color: "#e8dbb5" }}>Together, we can stop it.</strong>
+
+          <p className="hero-rail text-[16px] sm:text-[18px] leading-[1.6] max-w-xl mx-auto lg:mx-0 mb-10 text-center lg:text-left" style={{ color: "rgba(232,219,181,0.78)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+            Big Tech is building hundreds of AI data centers, powered by fossil fuels, draining water supplies, and displacing communities. All without your consent.{" "}
+            <strong style={{ color: "#f0e8d0", fontWeight: 600 }}>Together, we can stop it.</strong>
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Button size="lg" className="text-base px-8" style={{ background: GOLD, color: FOREST }} onClick={() => scrollTo(mapSectionRef)} data-testid="button-hero-map">
-              Find Projects Near You <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-            <Button size="lg" variant="outline" className="text-base px-8" style={{ borderColor: "rgba(201,162,39,0.4)", color: "#e8dbb5" }} onClick={() => scrollTo(federalRef)} data-testid="button-hero-federal">
+
+          <div className="hero-rail flex flex-wrap items-center justify-center lg:justify-start gap-3">
+            <button 
+              onClick={() => scrollTo(mapSectionRef)}
+              className="inline-flex items-center gap-2 px-7 py-4 transition-all hover:opacity-90" 
+              style={{ background: GOLD, color: FOREST, borderRadius: "4px", fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 600, fontSize: "15px" }}
+              data-testid="button-hero-map"
+            >
+              Find Projects Near You
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <a 
+              href="https://app.chilli.club/a/173be2ee-0611-4351-bc48-9f7ddb893c64"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-4 transition-all hover:bg-white/[0.04] border" 
+              style={{ background: "transparent", color: "#f0e8d0", borderColor: "rgba(201,162,39,0.55)", borderRadius: "4px", fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 600, fontSize: "15px" }}
+              data-testid="button-hero-federal"
+            >
               Take Nationwide Action
-            </Button>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+          </div>
+
+          {/* Mobile-only inline photo (lg+ uses absolute below) */}
+          <div className="lg:hidden flex justify-center">
+            <img
+              src="/protesters.png"
+              alt="Community members holding protest signs reading 'People over profit. No data center here.' and 'Brightwood United.'"
+              className="w-full max-w-[500px] h-auto"
+              style={{
+                filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.45)) brightness(1.08) contrast(1.05)"
+              }}
+            />
           </div>
         </div>
 
+        {/* Desktop+ photo — absolute, anchored bottom-right, large */}
+        <img
+          src="/protesters.png"
+          alt=""
+          aria-hidden="true"
+          className="hidden lg:block absolute z-10 pointer-events-none"
+          style={{
+            right: "0",
+            bottom: "0",
+            height: "min(94%, 880px)",
+            width: "auto",
+            maxWidth: "70%",
+            objectFit: "contain",
+            objectPosition: "bottom right",
+            filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.45)) brightness(1.08) contrast(1.05)"
+          }}
+        />
+
+        {/* Minimal scroll cue */}
         <button 
           onClick={() => scrollTo(mapSectionRef)}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground animate-bounce"
-          aria-label="Scroll down"
+          className="hero-scroll absolute bottom-8 left-1/2 -translate-x-1/2 z-10 inline-flex flex-col items-center gap-1 transition-opacity hover:opacity-100" 
+          style={{ color: "rgba(232,219,181,0.45)", fontFamily: "'Manrope', system-ui, sans-serif" }}
           data-testid="button-scroll-down"
         >
-          <ChevronDown className="w-6 h-6" />
+          <span className="text-[10px] font-medium uppercase" style={{ letterSpacing: "0.22em" }}>Scroll</span>
+          <ChevronDown className="w-3 h-3" />
         </button>
       </section>
 
-      {/* Stats bar */}
-      <section className="border-y py-8 px-4" style={{ background: "rgba(201,162,39,0.05)", borderColor: "rgba(201,162,39,0.2)" }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-            {STATS.map((stat, i) => (
-              <div key={i} className="text-center" data-testid={`stat-item-${i}`}>
-                <div className="text-2xl sm:text-3xl font-black" style={{ color: GOLD }}>{stat.value}</div>
-                <div className="text-xs text-muted-foreground mt-1 leading-tight">{stat.label}</div>
+      {/* By The Numbers — 50/50 split: data on left, embedded video on right */}
+      <section className="relative py-20 sm:py-24 px-6 sm:px-10 lg:px-16 border-y" style={{ background: "rgba(7,14,7,0.55)", borderColor: "rgba(201,162,39,0.18)" }}>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* LEFT: thermal printer receipt — narrow, monospace, perforated edges */}
+          <div className="relative flex justify-center lg:justify-start items-start py-4">
+            <div 
+              className="relative w-full max-w-[460px]" 
+              style={{ 
+                transform: "rotate(-2deg)",
+                filter: "drop-shadow(0 24px 36px rgba(0,0,0,0.55)) drop-shadow(0 6px 12px rgba(0,0,0,0.3))"
+              }}
+            >
+              {/* Perforated top edge */}
+              <div className="w-full h-3" style={{
+                background: "#f7f1e1",
+                clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 96% 50%, 92% 100%, 88% 50%, 84% 100%, 80% 50%, 76% 100%, 72% 50%, 68% 100%, 64% 50%, 60% 100%, 56% 50%, 52% 100%, 48% 50%, 44% 100%, 40% 50%, 36% 100%, 32% 50%, 28% 100%, 24% 50%, 20% 100%, 16% 50%, 12% 100%, 8% 50%, 4% 100%, 0% 50%)"
+              }} />
+
+              {/* Receipt body */}
+              <div 
+                style={{ 
+                  background: "#f7f1e1",
+                  color: "#161616",
+                  padding: "26px 28px 16px",
+                  fontFamily: "'IBM Plex Mono', 'Space Mono', monospace",
+                  fontSize: "11px",
+                  lineHeight: 1.45
+                }}
+              >
+                {/* Vendor header — centered, like a real receipt */}
+                <div className="text-center mb-4">
+                  <div className="font-bold text-[16px] tracking-[0.18em]" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>STOP BIG DATA</div>
+                  <div className="text-[9px] tracking-[0.12em] mt-1 opacity-65">A NATIONAL CAMPAIGN</div>
+                  <div className="text-[9px] tracking-[0.12em] opacity-65">STOPBIGDATA.ORG</div>
+                </div>
+
+                {/* Dotted divider */}
+                <div className="text-center text-[10px] opacity-60 mb-3 leading-none select-none">{"·".repeat(40)}</div>
+
+                {/* Date / receipt number */}
+                <div className="flex justify-between text-[9px] tracking-[0.08em] mb-1 opacity-75">
+                  <span>DATE</span>
+                  <span>MAY 21, 2026</span>
+                </div>
+                <div className="flex justify-between text-[9px] tracking-[0.08em] mb-1 opacity-75">
+                  <span>RECEIPT #</span>
+                  <span>2026-001</span>
+                </div>
+                <div className="flex justify-between text-[9px] tracking-[0.08em] mb-3 opacity-75">
+                  <span>CUSTOMER</span>
+                  <span>YOU</span>
+                </div>
+
+                {/* Dotted divider */}
+                <div className="text-center text-[10px] opacity-60 mb-2 leading-none select-none">{"·".repeat(40)}</div>
+
+                {/* Column header */}
+                <div className="flex justify-between text-[9px] tracking-[0.1em] font-bold mb-2">
+                  <span>QTY  ITEM</span>
+                  <span>AMOUNT</span>
+                </div>
+
+                {/* Items — each is description with dots leading to amount */}
+                <div className="space-y-2 mb-2">
+                  <div className="flex justify-between items-baseline gap-1">
+                    <div className="leading-tight max-w-[60%]">
+                      <div>1 GRID UPGRADES</div>
+                      <div className="text-[9px] opacity-65 mt-0.5">RATEPAYER-FUNDED</div>
+                    </div>
+                    <div className="font-bold text-[13px] whitespace-nowrap">$50,000,000,000</div>
+                  </div>
+                  <div className="flex justify-between items-baseline gap-1">
+                    <div className="leading-tight max-w-[60%]">
+                      <div>1 US ELECTRICITY</div>
+                      <div className="text-[9px] opacity-65 mt-0.5">CONSUMED BY DATA CTRS</div>
+                    </div>
+                    <div className="font-bold text-[15px] whitespace-nowrap">3.5%</div>
+                  </div>
+                  <div className="flex justify-between items-baseline gap-1">
+                    <div className="leading-tight max-w-[60%]">
+                      <div>1 ARRIVAL OF 10%</div>
+                      <div className="text-[9px] opacity-65 mt-0.5">AI DATA CTR POWER</div>
+                    </div>
+                    <div className="font-bold text-[15px] whitespace-nowrap">YR 2030</div>
+                  </div>
+                  <div className="flex justify-between items-baseline gap-1">
+                    <div className="leading-tight max-w-[60%]">
+                      <div>1 WATER USE / DAY</div>
+                      <div className="text-[9px] opacity-65 mt-0.5">BY 2027, GALLONS</div>
+                    </div>
+                    <div className="font-bold text-[13px] whitespace-nowrap">6,600,000,000</div>
+                  </div>
+                </div>
+
+                {/* Dotted divider */}
+                <div className="text-center text-[10px] opacity-60 mb-2 leading-none select-none">{"·".repeat(40)}</div>
+
+                {/* Subtotal / total */}
+                <div className="flex justify-between text-[10px] mb-1">
+                  <span className="opacity-75">SUBTOTAL</span>
+                  <span>$50B + EVERYTHING ELSE</span>
+                </div>
+                <div className="flex justify-between text-[10px] mb-1">
+                  <span className="opacity-75">BIG TECH PAID</span>
+                  <span>$0.00</span>
+                </div>
+                <div className="flex justify-between font-bold text-[13px] mt-3 mb-2 pt-2 border-t-2 border-double" style={{ borderColor: "#161616" }}>
+                  <span>TOTAL DUE</span>
+                  <span className="text-[18px]">YOU</span>
+                </div>
+
+                {/* Solid double rule */}
+                <div className="text-center text-[10px] opacity-60 mb-3 mt-3 leading-none select-none">{"=".repeat(38)}</div>
+
+                {/* Closing message */}
+                <div className="text-center mb-3">
+                  <div className="text-[10px] tracking-[0.15em] font-bold">NOBODY ASKED YOU</div>
+                  <div className="text-[10px] tracking-[0.15em] font-bold">TO PAY FOR THIS.</div>
+                </div>
+
+                {/* Tiny barcode-ish line */}
+                <div className="flex justify-center gap-[2px] mb-2 opacity-80" aria-hidden="true">
+                  {[2,4,1,3,2,5,1,2,4,3,2,1,5,2,3,1,4,2,1,3,5,2,1,4,2,3,1,5,2,4,1,2,3,5].map((w, i) => (
+                    <span key={i} style={{ display: "inline-block", width: `${w}px`, height: "26px", background: "#161616" }} />
+                  ))}
+                </div>
+                <div className="text-center text-[9px] tracking-[0.15em] opacity-65">SBD-2026-USA-001</div>
+
+                {/* Footer */}
+                <div className="text-center mt-3 pt-2 border-t border-dashed" style={{ borderColor: "rgba(22,22,22,0.35)" }}>
+                  <div className="text-[9px] tracking-[0.1em] opacity-65">THANK YOU FOR YOUR ATTENTION</div>
+                  <div className="text-[9px] tracking-[0.1em] opacity-65 mt-0.5">PLEASE TAKE ACTION ↓</div>
+                </div>
               </div>
-            ))}
+
+              {/* Perforated bottom edge */}
+              <div className="w-full h-3" style={{
+                background: "#f7f1e1",
+                clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 96% 50%, 92% 0%, 88% 50%, 84% 0%, 80% 50%, 76% 0%, 72% 50%, 68% 0%, 64% 50%, 60% 0%, 56% 50%, 52% 0%, 48% 50%, 44% 0%, 40% 50%, 36% 0%, 32% 50%, 28% 0%, 24% 50%, 20% 0%, 16% 50%, 12% 0%, 8% 50%, 4% 0%, 0% 50%)"
+              }} />
+            </div>          </div>
+
+          {/* RIGHT: embedded video */}
+          <div className="relative">
+            <div className="relative rounded-sm overflow-hidden border" style={{ borderColor: "rgba(201,162,39,0.22)", boxShadow: "0 20px 60px -20px rgba(0,0,0,0.7)" }}>
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                className="block w-full h-auto"
+                style={{ aspectRatio: "1080 / 1350" }}
+              >
+                <source src="/kevin.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
       </section>
@@ -373,7 +593,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-6">
             <div className="text-xs font-mono uppercase tracking-widest mb-2" style={{ color: GOLD }}>Interactive Map</div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif" }}>
               AI Data Center Projects
             </h2>
             <p className="text-muted-foreground max-w-2xl">
@@ -525,88 +745,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Nationwide Actions */}
-      <section ref={federalRef} id="nationwide-actions" className="py-20 px-4 bg-black/20 border-t" style={{ borderColor: "rgba(201,162,39,0.15)" }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-10 text-center max-w-3xl mx-auto">
-            <div className="text-xs font-mono uppercase tracking-widest mb-2" style={{ color: GOLD }}>National Campaign</div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Demand Federal Oversight
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Data centers currently operate in a regulatory vacuum. Join thousands of Americans demanding transparency, water protections, and clean energy standards from our leaders.
-            </p>
-          </div>
-
-          {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {NATIONWIDE_CATEGORIES.map((ctg) => {
-              const Icon = CATEGORY_ICONS[ctg.id];
-              return (
-                <button 
-                  key={ctg.id} 
-                  onClick={() => setActiveCategory(ctg.id)}
-                  className="flex items-center gap-2 px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider transition-all border"
-                  style={{ 
-                    background: activeCategory === ctg.id ? "rgba(201,162,39,0.12)" : "transparent",
-                    borderColor: activeCategory === ctg.id ? GOLD : "rgba(201,162,39,0.25)",
-                    color: activeCategory === ctg.id ? GOLD : "rgba(232,219,181,0.5)",
-                  }}
-                  data-testid={`category-tab-${ctg.id}`}
-                >
-                  <Icon className="w-4 h-4" />
-                  {ctg.label}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Active category description */}
-          <div className="mb-6 p-4 rounded-md border" style={{ background: "rgba(201,162,39,0.06)", borderColor: "rgba(201,162,39,0.2)" }}>
-            <div className="flex items-start gap-3">
-              {(() => {
-                const Icon = CATEGORY_ICONS[activeCategory];
-                return <Icon className="w-5 h-5 mt-0.5 shrink-0" style={{ color: GOLD }} />;
-              })()}
-              <p className="text-sm text-muted-foreground leading-relaxed">{activeCtg.description}</p>
-            </div>
-          </div>
-
-          {/* Action cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredActions.map((action) => (
-              <a 
-                key={action.id} 
-                href={action.url} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="block rounded-md p-5 hover-elevate group"
-                style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(201,162,39,0.15)" }}
-                data-testid={`nationwide-action-${action.id}`}
-              >
-                <div className="flex items-center gap-2 mb-3" style={{ color: GOLD }}>
-                  <div className="w-8 h-8 rounded-md flex items-center justify-center shrink-0" style={{ background: "rgba(201,162,39,0.12)", border: "1px solid rgba(201,162,39,0.25)" }}>
-                    <ActionTypeIcon type={action.type} />
-                  </div>
-                  <span className="text-xs font-mono uppercase tracking-wide"><ActionTypeLabel type={action.type} /></span>
-                </div>
-                <h3 className="font-bold text-sm mb-2 leading-snug" style={{ color: "#e8dbb5" }}>{action.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed mb-3">{action.description}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-muted-foreground">{action.target}</span>
-                  <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-amber-400 transition-colors" />
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-20 px-4 text-center relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,162,39,0.06) 0%, transparent 70%)" }} />
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", color: "#e8dbb5" }}>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#e8dbb5" }}>
             Every Action Counts. <br /> <em style={{ color: GOLD }}>Start Now.</em>
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
@@ -616,9 +759,7 @@ export default function Home() {
             <Button size="lg" className="text-base px-8" style={{ background: GOLD, color: FOREST }} onClick={() => scrollTo(mapSectionRef)} data-testid="button-cta-map">
               Find Your Local Project <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-            <Button size="lg" variant="outline" className="text-base px-8 border-amber-800/40 text-foreground" onClick={() => scrollTo(federalRef)} data-testid="button-cta-nationwide">
-              Nationwide Actions
-            </Button>
+            
           </div>
         </div>
       </section>
@@ -654,9 +795,7 @@ export default function Home() {
             <div>
               <h4 className="font-mono text-[10px] uppercase tracking-widest mb-6" style={{ color: GOLD }}>Take Action</h4>
               <ul className="space-y-4 text-sm text-muted-foreground">
-                <li><button onClick={() => { setActiveCategory("federal"); scrollTo(federalRef); }} className="hover:text-foreground transition-colors text-left">Federal Actions</button></li>
-                <li><button onClick={() => { setActiveCategory("banks"); scrollTo(federalRef); }} className="hover:text-foreground transition-colors text-left">Banks & Insurance Actions</button></li>
-                <li><button onClick={() => { setActiveCategory("bigtech"); scrollTo(federalRef); }} className="hover:text-foreground transition-colors text-left">Big Tech Actions</button></li>
+                <li><a href="https://app.chilli.club/a/173be2ee-0611-4351-bc48-9f7ddb893c64" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Take Nationwide Action</a></li>
                 <li>
                   <a href={DONATE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-semibold transition-colors" style={{ color: GOLD }} data-testid="link-footer-donate">
                     <Heart className="w-3 h-3" /> Donate to the Campaign
