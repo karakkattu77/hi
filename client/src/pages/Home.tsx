@@ -314,35 +314,49 @@ export default function Home() {
         onActNow={() => scrollTo(federalRef)} 
       />
 
-      {/* Hero — editorial masthead composition */}
+      {/* Hero — stripped editorial masthead with stronger painterly green bg */}
       <section className="relative min-h-[92vh] flex flex-col px-6 sm:px-10 lg:px-16 overflow-hidden">
-        {/* Background globe */}
-        <div className="absolute inset-0">
-          <img 
-            src="/globe-bg.png" 
-            alt="" 
-            className="w-full h-full object-cover" 
-            style={{ filter: "brightness(0.42) saturate(0.78) contrast(1.05)", transform: "scale(1.08) translateY(2%) translateX(8%)", transformOrigin: "center" }} 
-          />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(95deg, rgba(7,14,7,0.92) 0%, rgba(7,14,7,0.55) 55%, rgba(7,14,7,0.75) 100%)" }} />
-        </div>
+        {/* Painterly green background — layered gradients */}
+        <div 
+          className="absolute inset-0" 
+          style={{ 
+            background: `radial-gradient(ellipse 70% 50% at 18% 28%, hsla(95, 30%, 24%, 0.85) 0%, transparent 55%), radial-gradient(ellipse 65% 50% at 85% 22%, hsla(75, 28%, 20%, 0.7) 0%, transparent 50%), radial-gradient(ellipse 80% 60% at 60% 95%, hsla(110, 35%, 10%, 0.95) 0%, transparent 65%), linear-gradient(170deg, hsla(110, 28%, 10%, 0.6) 0%, hsla(100, 30%, 6%, 0.98) 100%)` 
+          }} 
+        />
 
-        {/* Top masthead row — campaign label left, volume right */}
-        <div className="relative z-10 pt-10 pb-2 flex items-center justify-between border-b" style={{ borderColor: "rgba(201,162,39,0.18)" }}>
-          <div className="font-mono text-[10px] uppercase inline-flex items-center gap-3 pb-4" style={{ color: GOLD, letterSpacing: "0.32em" }}>
+        {/* Globe — bigger, positioned bottom-right for asymmetric framing */}
+        <img 
+          src="/globe-bg.png" 
+          alt="" 
+          className="absolute pointer-events-none" 
+          style={{ 
+            width: "75%", 
+            maxWidth: "1200px",
+            bottom: "-22%",
+            right: "-8%",
+            opacity: 0.7,
+            filter: "saturate(0.9) brightness(0.95) contrast(1.05)",
+            mixBlendMode: "screen"
+          }} 
+        />
+
+        {/* Painterly grain overlay */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.16, mixBlendMode: "overlay" }} xmlns="http://www.w3.org/2000/svg">
+          <filter id="hero-grain"><feTurbulence type="fractalNoise" baseFrequency="0.78" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0"/></filter>
+          <rect width="100%" height="100%" filter="url(#hero-grain)"/>
+        </svg>
+
+        {/* Top eyebrow — campaign label only, left aligned */}
+        <div className="relative z-10 pt-10 pb-6">
+          <div className="font-mono text-[10px] uppercase inline-flex items-center gap-3" style={{ color: GOLD, letterSpacing: "0.32em" }}>
             <span style={{ display: "inline-block", width: 28, height: 1, background: GOLD, opacity: 0.55 }} />
-            Stop Big Data
-            <span style={{ display: "inline-block", width: 4, height: 4, background: GOLD, opacity: 0.55, borderRadius: "50%" }} />
-            A National Campaign
-          </div>
-          <div className="hidden md:block font-mono text-[10px] uppercase pb-4" style={{ color: "rgba(201,162,39,0.7)", letterSpacing: "0.32em" }}>
-            Vol. 01 — Spring 2026
+            Stop Big Data — A National Campaign
           </div>
         </div>
 
-        {/* Main composition — headline left, subhead+CTA right */}
-        <div className="relative z-10 flex-1 grid grid-cols-1 md:grid-cols-12 gap-y-10 gap-x-10 lg:gap-x-16 items-end py-12 lg:py-16">
-          <div className="md:col-span-8 lg:col-span-8">
+        {/* Main composition — headline left, subhead+CTA boxes right */}
+        <div className="relative z-10 flex-1 grid grid-cols-1 md:grid-cols-12 gap-y-10 gap-x-10 lg:gap-x-16 items-end py-10 lg:py-14">
+          <div className="md:col-span-8">
             <h1 
               className="text-[60px] sm:text-[88px] lg:text-[132px] xl:text-[148px] leading-[0.92] tracking-[-0.035em]" 
               style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}
@@ -353,62 +367,75 @@ export default function Home() {
             </h1>
           </div>
 
-          <div className="md:col-span-4 lg:col-span-4 md:pl-6 md:border-l max-w-sm" style={{ borderColor: "rgba(201,162,39,0.18)" }}>
-            <div className="font-mono text-[10px] uppercase mb-5" style={{ color: GOLD, letterSpacing: "0.28em", opacity: 0.85 }}>
-              The Case
-            </div>
-            <p className="text-[15px] sm:text-base leading-[1.7] mb-7" style={{ color: "rgba(232,219,181,0.82)" }}>
+          <div className="md:col-span-4 max-w-sm">
+            <p className="text-[15px] sm:text-base leading-[1.7] mb-7" style={{ color: "rgba(232,219,181,0.85)" }}>
               Big Tech is building hundreds of AI data centers — powered by fossil fuels, draining water supplies, and displacing communities. All without your consent.{" "}
               <strong style={{ color: "#f0e8d0", fontWeight: 500 }}>Together, we can stop it.</strong>
             </p>
-            <div className="flex flex-col gap-4 items-start">
-              <Button 
-                size="lg" 
-                className="text-[15px] px-7 py-6 h-auto" 
-                style={{ background: GOLD, color: FOREST, borderRadius: "2px" }} 
-                onClick={() => scrollTo(mapSectionRef)} 
+
+            {/* Two equal CTA boxes — stacked */}
+            <div className="grid grid-cols-1 gap-3">
+              <button 
+                onClick={() => scrollTo(mapSectionRef)}
+                className="text-left p-5 transition-all hover:opacity-90 group" 
+                style={{ background: GOLD, color: FOREST, borderRadius: "2px" }}
                 data-testid="button-hero-map"
               >
-                Find Projects Near You <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
+                <div className="font-mono text-[10px] uppercase mb-2 opacity-70" style={{ letterSpacing: "0.24em" }}>
+                  01 · Local
+                </div>
+                <div className="text-[18px] flex items-center justify-between gap-3 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500 }}>
+                  Find Projects Near You
+                  <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                </div>
+              </button>
               <button 
-                className="text-[14px] inline-flex items-center gap-2 pb-1 border-b transition-opacity hover:opacity-70" 
-                style={{ color: "#f0e8d0", borderColor: "rgba(201,162,39,0.55)" }}
-                onClick={() => scrollTo(federalRef)} 
+                onClick={() => scrollTo(federalRef)}
+                className="text-left p-5 transition-all hover:bg-white/[0.03] border group" 
+                style={{ background: "transparent", color: "#f0e8d0", borderColor: "rgba(201,162,39,0.45)", borderRadius: "2px" }}
                 data-testid="button-hero-federal"
               >
-                Take Nationwide Action <ArrowRight className="w-3 h-3" />
+                <div className="font-mono text-[10px] uppercase mb-2" style={{ letterSpacing: "0.24em", color: GOLD, opacity: 0.75 }}>
+                  02 · National
+                </div>
+                <div className="text-[18px] flex items-center justify-between gap-3 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500 }}>
+                  Take Nationwide Action
+                  <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                </div>
               </button>
             </div>
           </div>
         </div>
 
-        {/* Bottom strip — scroll cue + breadcrumbs */}
-        <div className="relative z-10 flex items-center justify-between pb-8 pt-4 border-t" style={{ borderColor: "rgba(201,162,39,0.18)" }}>
-          <button 
-            onClick={() => scrollTo(mapSectionRef)}
-            className="font-mono text-[10px] uppercase inline-flex items-center gap-2 transition-opacity hover:opacity-100" 
-            style={{ color: "rgba(232,219,181,0.6)", letterSpacing: "0.28em" }}
-            data-testid="button-scroll-down"
-          >
-            Scroll
-            <ChevronDown className="w-3 h-3" />
-          </button>
-          <div className="hidden md:flex items-center gap-5 font-mono text-[10px] uppercase" style={{ color: "rgba(232,219,181,0.5)", letterSpacing: "0.28em" }}>
-            <span>01 · The Case</span>
-            <span style={{ display: "inline-block", width: 12, height: 1, background: "rgba(232,219,181,0.4)" }} />
-            <span>02 · The Numbers</span>
-            <span style={{ display: "inline-block", width: 12, height: 1, background: "rgba(232,219,181,0.4)" }} />
-            <span>03 · The Map</span>
-            <span style={{ display: "inline-block", width: 12, height: 1, background: "rgba(232,219,181,0.4)" }} />
-            <span>04 · Take Action</span>
-          </div>
-        </div>
+        {/* Minimal scroll cue at bottom */}
+        <button 
+          onClick={() => scrollTo(mapSectionRef)}
+          className="relative z-10 self-start font-mono text-[10px] uppercase inline-flex items-center gap-2 pb-8 transition-opacity hover:opacity-100" 
+          style={{ color: "rgba(232,219,181,0.5)", letterSpacing: "0.28em" }}
+          data-testid="button-scroll-down"
+        >
+          Scroll
+          <ChevronDown className="w-3 h-3" />
+        </button>
       </section>
 
-      {/* By The Numbers — editorial stats spread */}
-      <section className="relative py-20 sm:py-24 px-4 border-y" style={{ background: "rgba(7,14,7,0.45)", borderColor: "rgba(201,162,39,0.15)" }}>
-        <div className="max-w-7xl mx-auto">
+      {/* By The Numbers — editorial stats spread with video bg */}
+      <section className="relative py-20 sm:py-24 px-4 border-y overflow-hidden" style={{ borderColor: "rgba(201,162,39,0.18)" }}>
+        {/* Background video — Power Shift Project cover */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          style={{ opacity: 0.28, filter: "saturate(0.7) contrast(1.05)" }}
+          aria-hidden="true"
+        >
+          <source src="/cover-photo-ig.mp4" type="video/mp4" />
+        </video>
+        {/* Dark gradient overlay so editorial text + numbers stay readable */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(7,14,7,0.92) 0%, rgba(7,14,7,0.78) 35%, rgba(7,14,7,0.85) 70%, rgba(7,14,7,0.94) 100%)" }} />
+        <div className="relative z-10 max-w-7xl mx-auto">
           {/* Section header — eyebrow + headline + supporting sentence on the right */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-y-6 gap-x-10 mb-14 sm:mb-16 pb-10 sm:pb-12" style={{ borderBottom: "1px solid rgba(201,162,39,0.18)" }}>
             <div className="md:col-span-7">
