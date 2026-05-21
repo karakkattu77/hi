@@ -354,16 +354,47 @@ export default function Home() {
         </button>
       </section>
 
-      {/* Stats bar */}
-      <section className="border-y py-8 px-4" style={{ background: "rgba(201,162,39,0.05)", borderColor: "rgba(201,162,39,0.2)" }}>
+      {/* By The Numbers — editorial stats spread */}
+      <section className="relative py-20 sm:py-24 px-4 border-y" style={{ background: "rgba(7,14,7,0.45)", borderColor: "rgba(201,162,39,0.15)" }}>
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-            {STATS.map((stat, i) => (
-              <div key={i} className="text-center" data-testid={`stat-item-${i}`}>
-                <div className="text-2xl sm:text-3xl font-black" style={{ color: GOLD }}>{stat.value}</div>
-                <div className="text-xs text-muted-foreground mt-1 leading-tight">{stat.label}</div>
+          {/* Section header — eyebrow + headline + supporting sentence on the right */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-y-6 gap-x-10 mb-14 sm:mb-16 pb-10 sm:pb-12" style={{ borderBottom: "1px solid rgba(201,162,39,0.18)" }}>
+            <div className="md:col-span-7">
+              <div className="font-mono text-[11px] uppercase mb-4 inline-flex items-center gap-3" style={{ color: GOLD, opacity: 0.85, letterSpacing: "0.32em" }}>
+                <span style={{ display: "inline-block", width: 24, height: 1, background: GOLD, opacity: 0.55 }} />
+                By The Numbers
               </div>
-            ))}
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl tracking-[-0.02em] leading-[1.04]" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}>
+                The <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 400 }}>cost</em> of inaction.
+              </h2>
+            </div>
+            <div className="md:col-span-5 md:pt-3">
+              <p className="text-base sm:text-lg leading-[1.65]" style={{ color: "rgba(232,219,181,0.72)" }}>
+                Big Tech's AI buildout is the largest fossil-fueled infrastructure project of the decade. Here is what is at stake.
+              </p>
+            </div>
+          </div>
+
+          {/* Stats — 3-column editorial grid with vertical rules */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-14 gap-x-10 lg:gap-x-14">
+            {STATS.map((stat, i) => {
+              const showLeftRule = (i % 3 !== 0);
+              return (
+                <div 
+                  key={i} 
+                  className={showLeftRule ? "sm:pl-10 sm:border-l" : ""}
+                  style={showLeftRule ? { borderColor: "rgba(201,162,39,0.18)" } : {}}
+                  data-testid={`stat-item-${i}`}
+                >
+                  <div className="text-[72px] sm:text-[88px] lg:text-[104px] leading-[0.95] mb-4 tracking-[-0.035em]" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: GOLD, fontWeight: 500 }}>
+                    {stat.value}
+                  </div>
+                  <div className="text-[15px] sm:text-base leading-[1.55] max-w-[26ch]" style={{ color: "rgba(232,219,181,0.78)" }}>
+                    {stat.label}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
