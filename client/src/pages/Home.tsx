@@ -315,7 +315,7 @@ export default function Home() {
       />
 
       {/* Hero — stripped editorial masthead with stronger painterly green bg */}
-      <section className="relative min-h-[92vh] flex flex-col px-6 sm:px-10 lg:px-16 overflow-hidden">
+      <section className="relative min-h-[82vh] flex flex-col px-6 sm:px-10 lg:px-16 overflow-hidden">
         {/* Painterly green hero background — layered, no visible edges */}
         {/* 1. Dark forest base + green gradients */}
         <div 
@@ -348,7 +348,7 @@ export default function Home() {
         </svg>
 
         {/* Main composition — headline left, subhead+CTA boxes right */}
-        <div className="relative z-10 flex-1 grid grid-cols-1 md:grid-cols-12 gap-y-10 gap-x-10 lg:gap-x-16 items-end py-10 lg:py-14">
+        <div className="relative z-10 flex-1 grid grid-cols-1 md:grid-cols-12 gap-y-10 gap-x-10 lg:gap-x-16 items-start pt-14 sm:pt-16 lg:pt-20 pb-10">
           <div className="md:col-span-8">
             <h1 
               className="text-[56px] sm:text-[72px] md:text-[84px] lg:text-[100px] xl:text-[116px] leading-[0.96] tracking-[-0.04em]" 
