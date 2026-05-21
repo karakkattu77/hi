@@ -315,7 +315,7 @@ export default function Home() {
       />
 
       {/* Hero — Habitline-style: centered, sans, floating cards, dark+gold */}
-      <section className="relative min-h-[88vh] flex flex-col justify-center px-6 sm:px-10 lg:px-16 overflow-hidden">
+      <section className="relative min-h-[92vh] flex flex-col justify-center px-6 sm:px-10 lg:px-16 overflow-hidden">
         {/* Painterly green hero background */}
         <div 
           className="absolute inset-0" 
@@ -346,16 +346,16 @@ export default function Home() {
           <rect width="100%" height="100%" filter="url(#hero-grain)"/>
         </svg>
 
-        {/* Hero composition — text LEFT, protester photo RIGHT */}
-        <div className="relative z-10 max-w-7xl mx-auto py-16 lg:py-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-y-12 gap-x-10 items-center">
-          <div className="lg:col-span-5 text-center lg:text-left">
+        {/* Hero composition — text LEFT (z-20), big protester photo bottom-right absolute */}
+        <div className="relative z-20 max-w-7xl mx-auto py-12 lg:py-16 w-full grid grid-cols-1 lg:grid-cols-12 gap-y-12 gap-x-10 items-center">
+          <div className="lg:col-span-6 text-center lg:text-left">
           <h1 
             className="text-[44px] sm:text-[54px] md:text-[62px] lg:text-[68px] xl:text-[76px] leading-[1.04] tracking-[-0.04em] mb-6" 
             style={{ fontFamily: "'Manrope', system-ui, sans-serif", color: "#f0e8d0", fontWeight: 800 }}
           >
-            <span className="hero-line hero-line-1 block">Is <span style={{ color: GOLD }}>Big&nbsp;Data</span></span>
-            <span className="hero-line hero-line-2 block">coming to your</span>
-            <span className="hero-line hero-line-3 block"><span style={{ color: GOLD }}>backyard</span>?</span>
+            <span className="hero-line hero-line-1 block whitespace-nowrap">Is <span style={{ color: GOLD }}>Big&nbsp;Data</span></span>
+            <span className="hero-line hero-line-2 block whitespace-nowrap">coming&nbsp;to&nbsp;your</span>
+            <span className="hero-line hero-line-3 block whitespace-nowrap"><span style={{ color: GOLD }}>backyard</span>?</span>
           </h1>
 
           <p className="hero-rail text-[16px] sm:text-[18px] leading-[1.6] max-w-xl mx-auto lg:mx-0 mb-10 text-center lg:text-left" style={{ color: "rgba(232,219,181,0.78)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
@@ -385,17 +385,36 @@ export default function Home() {
           </div>
           </div>
 
-          <div className="lg:col-span-7 flex justify-center lg:justify-end items-center">
+          {/* Mobile-only inline photo (lg+ uses absolute below) */}
+          <div className="lg:hidden flex justify-center">
             <img
               src="/protesters.png"
               alt="Community members holding protest signs reading 'People over profit. No data center here.' and 'Brightwood United.'"
-              className="w-full h-auto"
+              className="w-full max-w-[500px] h-auto"
               style={{
                 filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.45)) brightness(1.08) contrast(1.05)"
               }}
             />
           </div>
         </div>
+
+        {/* Desktop+ photo — absolute, anchored bottom-right, large */}
+        <img
+          src="/protesters.png"
+          alt=""
+          aria-hidden="true"
+          className="hidden lg:block absolute z-10 pointer-events-none"
+          style={{
+            right: "0",
+            bottom: "0",
+            height: "min(94%, 880px)",
+            width: "auto",
+            maxWidth: "70%",
+            objectFit: "contain",
+            objectPosition: "bottom right",
+            filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.45)) brightness(1.08) contrast(1.05)"
+          }}
+        />
 
         {/* Minimal scroll cue */}
         <button 
@@ -415,7 +434,7 @@ export default function Home() {
           {/* LEFT: thermal printer receipt — narrow, monospace, perforated edges */}
           <div className="relative flex justify-center lg:justify-start items-start py-4">
             <div 
-              className="relative w-full max-w-[380px]" 
+              className="relative w-full max-w-[460px]" 
               style={{ 
                 transform: "rotate(-2deg)",
                 filter: "drop-shadow(0 24px 36px rgba(0,0,0,0.55)) drop-shadow(0 6px 12px rgba(0,0,0,0.3))"
@@ -432,7 +451,7 @@ export default function Home() {
                 style={{ 
                   background: "#f7f1e1",
                   color: "#161616",
-                  padding: "20px 22px 12px",
+                  padding: "26px 28px 16px",
                   fontFamily: "'IBM Plex Mono', 'Space Mono', monospace",
                   fontSize: "11px",
                   lineHeight: 1.45
@@ -440,7 +459,7 @@ export default function Home() {
               >
                 {/* Vendor header — centered, like a real receipt */}
                 <div className="text-center mb-4">
-                  <div className="font-bold text-[14px] tracking-[0.18em]" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>STOP BIG DATA</div>
+                  <div className="font-bold text-[16px] tracking-[0.18em]" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>STOP BIG DATA</div>
                   <div className="text-[9px] tracking-[0.12em] mt-1 opacity-65">A NATIONAL CAMPAIGN</div>
                   <div className="text-[9px] tracking-[0.12em] opacity-65">STOPBIGDATA.ORG</div>
                 </div>
@@ -478,28 +497,28 @@ export default function Home() {
                       <div>1 GRID UPGRADES</div>
                       <div className="text-[9px] opacity-65 mt-0.5">RATEPAYER-FUNDED</div>
                     </div>
-                    <div className="font-bold whitespace-nowrap">$50,000,000,000</div>
+                    <div className="font-bold text-[13px] whitespace-nowrap">$50,000,000,000</div>
                   </div>
                   <div className="flex justify-between items-baseline gap-1">
                     <div className="leading-tight max-w-[60%]">
                       <div>1 US ELECTRICITY</div>
                       <div className="text-[9px] opacity-65 mt-0.5">CONSUMED BY DATA CTRS</div>
                     </div>
-                    <div className="font-bold whitespace-nowrap">3.5%</div>
+                    <div className="font-bold text-[15px] whitespace-nowrap">3.5%</div>
                   </div>
                   <div className="flex justify-between items-baseline gap-1">
                     <div className="leading-tight max-w-[60%]">
                       <div>1 ARRIVAL OF 10%</div>
                       <div className="text-[9px] opacity-65 mt-0.5">AI DATA CTR POWER</div>
                     </div>
-                    <div className="font-bold whitespace-nowrap">YR 2030</div>
+                    <div className="font-bold text-[15px] whitespace-nowrap">YR 2030</div>
                   </div>
                   <div className="flex justify-between items-baseline gap-1">
                     <div className="leading-tight max-w-[60%]">
                       <div>1 WATER USE / DAY</div>
                       <div className="text-[9px] opacity-65 mt-0.5">BY 2027, GALLONS</div>
                     </div>
-                    <div className="font-bold whitespace-nowrap">6,600,000,000</div>
+                    <div className="font-bold text-[13px] whitespace-nowrap">6,600,000,000</div>
                   </div>
                 </div>
 
