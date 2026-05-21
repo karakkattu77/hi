@@ -316,31 +316,32 @@ export default function Home() {
 
       {/* Hero — stripped editorial masthead with stronger painterly green bg */}
       <section className="relative min-h-[92vh] flex flex-col px-6 sm:px-10 lg:px-16 overflow-hidden">
-        {/* Painterly green background — layered gradients */}
+        {/* Painterly green hero background — layered, no visible edges */}
+        {/* 1. Dark forest base + green gradients */}
         <div 
           className="absolute inset-0" 
           style={{ 
-            background: `radial-gradient(ellipse 70% 50% at 18% 28%, hsla(95, 30%, 24%, 0.85) 0%, transparent 55%), radial-gradient(ellipse 65% 50% at 85% 22%, hsla(75, 28%, 20%, 0.7) 0%, transparent 50%), radial-gradient(ellipse 80% 60% at 60% 95%, hsla(110, 35%, 10%, 0.95) 0%, transparent 65%), linear-gradient(170deg, hsla(110, 28%, 10%, 0.6) 0%, hsla(100, 30%, 6%, 0.98) 100%)` 
+            background: `radial-gradient(ellipse 70% 60% at 20% 28%, hsla(95, 32%, 18%, 0.85) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 82% 18%, hsla(78, 30%, 16%, 0.7) 0%, transparent 55%), linear-gradient(165deg, hsla(108, 28%, 9%, 1) 0%, hsla(100, 30%, 5%, 1) 100%)` 
           }} 
         />
-
-        {/* Globe — bigger, positioned bottom-right for asymmetric framing */}
+        {/* 2. Globe — full-bleed, low opacity, positioned so planet sits bottom-center */}
         <img 
           src="/globe-bg.png" 
           alt="" 
-          className="absolute pointer-events-none" 
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none" 
           style={{ 
-            width: "75%", 
-            maxWidth: "1200px",
-            bottom: "-22%",
-            right: "-8%",
-            opacity: 0.7,
-            filter: "saturate(0.9) brightness(0.95) contrast(1.05)",
-            mixBlendMode: "screen"
+            objectPosition: "center 75%",
+            opacity: 0.45,
+            filter: "saturate(0.55) brightness(0.7) contrast(1.1)",
+            mixBlendMode: "lighten"
           }} 
         />
-
-        {/* Painterly grain overlay */}
+        {/* 3. Dark bottom vignette so text reads cleanly over the globe */}
+        <div 
+          className="absolute inset-0 pointer-events-none" 
+          style={{ background: "linear-gradient(180deg, transparent 0%, transparent 40%, hsla(110, 30%, 4%, 0.55) 100%)" }} 
+        />
+        {/* 4. Painterly grain overlay */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.16, mixBlendMode: "overlay" }} xmlns="http://www.w3.org/2000/svg">
           <filter id="hero-grain"><feTurbulence type="fractalNoise" baseFrequency="0.78" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0"/></filter>
           <rect width="100%" height="100%" filter="url(#hero-grain)"/>
