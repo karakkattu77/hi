@@ -371,15 +371,17 @@ export default function Home() {
               Find Projects Near You
               <ArrowRight className="w-4 h-4" />
             </button>
-            <button 
-              onClick={() => scrollTo(federalRef)}
+            <a 
+              href="https://app.chilli.club/a/173be2ee-0611-4351-bc48-9f7ddb893c64"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-4 transition-all hover:bg-white/[0.04] border" 
               style={{ background: "transparent", color: "#f0e8d0", borderColor: "rgba(201,162,39,0.55)", borderRadius: "4px", fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 600, fontSize: "15px" }}
               data-testid="button-hero-federal"
             >
               Take Nationwide Action
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
           </div>
           </div>
 
@@ -793,9 +795,7 @@ export default function Home() {
             <div>
               <h4 className="font-mono text-[10px] uppercase tracking-widest mb-6" style={{ color: GOLD }}>Take Action</h4>
               <ul className="space-y-4 text-sm text-muted-foreground">
-                <li><button onClick={() => { setActiveCategory("federal"); scrollTo(federalRef); }} className="hover:text-foreground transition-colors text-left">Federal Actions</button></li>
-                <li><button onClick={() => { setActiveCategory("banks"); scrollTo(federalRef); }} className="hover:text-foreground transition-colors text-left">Banks & Insurance Actions</button></li>
-                <li><button onClick={() => { setActiveCategory("bigtech"); scrollTo(federalRef); }} className="hover:text-foreground transition-colors text-left">Big Tech Actions</button></li>
+                <li><a href="https://app.chilli.club/a/173be2ee-0611-4351-bc48-9f7ddb893c64" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Take Nationwide Action</a></li>
                 <li>
                   <a href={DONATE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-semibold transition-colors" style={{ color: GOLD }} data-testid="link-footer-donate">
                     <Heart className="w-3 h-3" /> Donate to the Campaign
