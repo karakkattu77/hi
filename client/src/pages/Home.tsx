@@ -347,10 +347,10 @@ export default function Home() {
           <rect width="100%" height="100%" filter="url(#hero-grain)"/>
         </svg>
 
-        {/* Top eyebrow — campaign label only, left aligned */}
-        <div className="relative z-10 pt-10 pb-6">
+        {/* Top eyebrow — campaign label with live pulse */}
+        <div className="relative z-10 pt-10 pb-6 hero-eyebrow">
           <div className="font-mono text-[10px] uppercase inline-flex items-center gap-3" style={{ color: GOLD, letterSpacing: "0.32em" }}>
-            <span style={{ display: "inline-block", width: 28, height: 1, background: GOLD, opacity: 0.55 }} />
+            <span className="live-dot" style={{ background: GOLD }} aria-hidden="true" />
             Stop Big Data — A National Campaign
           </div>
         </div>
@@ -362,13 +362,13 @@ export default function Home() {
               className="text-[52px] sm:text-[72px] md:text-[80px] lg:text-[96px] xl:text-[108px] leading-[0.94] tracking-[-0.03em]" 
               style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}
             >
-              Is <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 500 }}>Big Data</em><br />
-              coming to your<br />
-              <em style={{ fontStyle: "italic", fontWeight: 500 }}>backyard?</em>
+              <span className="hero-line hero-line-1 block">Is <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 500 }}>Big Data</em></span>
+              <span className="hero-line hero-line-2 block">coming to your</span>
+              <span className="hero-line hero-line-3 block"><em style={{ fontStyle: "italic", fontWeight: 500 }}>backyard?</em></span>
             </h1>
           </div>
 
-          <div className="md:col-span-4 max-w-sm">
+          <div className="md:col-span-4 max-w-sm hero-rail">
             <p className="text-[15px] sm:text-base leading-[1.7] mb-7" style={{ color: "rgba(232,219,181,0.85)" }}>
               Big Tech is building hundreds of AI data centers — powered by fossil fuels, draining water supplies, and displacing communities. All without your consent.{" "}
               <strong style={{ color: "#f0e8d0", fontWeight: 500 }}>Together, we can stop it.</strong>
@@ -378,7 +378,7 @@ export default function Home() {
             <div className="grid grid-cols-1 gap-3">
               <button 
                 onClick={() => scrollTo(mapSectionRef)}
-                className="text-left p-5 transition-all hover:opacity-90 group" 
+                className="shimmer-cta text-left p-5 transition-all hover:opacity-90 group" 
                 style={{ background: GOLD, color: FOREST, borderRadius: "2px" }}
                 data-testid="button-hero-map"
               >
@@ -411,7 +411,7 @@ export default function Home() {
         {/* Minimal scroll cue at bottom */}
         <button 
           onClick={() => scrollTo(mapSectionRef)}
-          className="relative z-10 self-start font-mono text-[10px] uppercase inline-flex items-center gap-2 pb-8 transition-opacity hover:opacity-100" 
+          className="hero-scroll relative z-10 self-start font-mono text-[10px] uppercase inline-flex items-center gap-2 pb-8 transition-opacity hover:opacity-100" 
           style={{ color: "rgba(232,219,181,0.5)", letterSpacing: "0.28em" }}
           data-testid="button-scroll-down"
         >
