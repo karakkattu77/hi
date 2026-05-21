@@ -315,30 +315,40 @@ export default function Home() {
       />
 
       {/* Hero */}
-      <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden pt-0">
+      <section className="relative min-h-[88vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden pt-0">
         <div className="absolute inset-0">
           <img 
             src="/globe-bg.png" 
             alt="" 
             className="w-full h-full object-cover" 
-            style={{ filter: "brightness(0.55) saturate(0.85)", transform: "scale(1.06) translateY(-4%)", transformOrigin: "top center" }} 
+            style={{ filter: "brightness(0.45) saturate(0.8) contrast(1.05)", transform: "scale(1.06) translateY(-4%)", transformOrigin: "top center" }} 
           />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(7,14,7,0.3) 0%, rgba(7,14,7,0.1) 50%, rgba(7,14,7,0.9) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(7,14,7,0.55) 0%, rgba(7,14,7,0.25) 45%, rgba(7,14,7,0.95) 100%)" }} />
+          {/* Grain texture overlay */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.12, mixBlendMode: "overlay" }} xmlns="http://www.w3.org/2000/svg">
+            <filter id="hero-grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="5"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0"/></filter>
+            <rect width="100%" height="100%" filter="url(#hero-grain)"/>
+          </svg>
         </div>
         
-        <div className="relative z-10 max-w-5xl mx-auto space-y-7 -mt-10">
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold leading-none tracking-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#f0e8d0" }}>
-            Is <em style={{ color: GOLD, fontStyle: "italic" }}>Big Data</em> <br /> Coming To <br /> Your Backyard?
+        <div className="relative z-10 max-w-6xl mx-auto space-y-7 -mt-10 px-2">
+          <div className="font-tech text-[11px] sm:text-xs inline-flex items-center gap-3" style={{ color: GOLD }}>
+            <span style={{ display: "inline-block", width: 28, height: 1, background: GOLD, opacity: 0.6 }} />
+            Stop Big Data — National Campaign
+            <span style={{ display: "inline-block", width: 28, height: 1, background: GOLD, opacity: 0.6 }} />
+          </div>
+          <h1 className="font-display text-[68px] sm:text-[112px] lg:text-[148px] leading-[0.88]" style={{ color: "#f0e8d0", letterSpacing: "0.005em" }}>
+            Is <span style={{ color: GOLD, position: "relative", display: "inline-block" }}>Big&nbsp;Data<span style={{ position: "absolute", left: 0, right: 0, bottom: "0.06em", height: "0.08em", background: GOLD, opacity: 0.22 }} /></span><br />Coming To<br />Your Backyard?
           </h1>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: "rgba(232,219,181,0.75)" }}>
+          <p className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: "rgba(232,219,181,0.78)" }}>
             Big Tech is building hundreds of AI data centers powered by fossil fuels, draining water supplies, and displacing communities all without your consent.{" "}
-            <strong style={{ color: "#e8dbb5" }}>Together, we can stop it.</strong>
+            <strong style={{ color: "#e8dbb5", fontWeight: 600 }}>Together, we can stop it.</strong>
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Button size="lg" className="text-base px-8" style={{ background: GOLD, color: FOREST }} onClick={() => scrollTo(mapSectionRef)} data-testid="button-hero-map">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <Button size="lg" className="text-base px-8 font-tech text-[13px]" style={{ background: GOLD, color: FOREST, letterSpacing: "0.12em" }} onClick={() => scrollTo(mapSectionRef)} data-testid="button-hero-map">
               Find Projects Near You <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-            <Button size="lg" variant="outline" className="text-base px-8" style={{ borderColor: "rgba(201,162,39,0.4)", color: "#e8dbb5" }} onClick={() => scrollTo(federalRef)} data-testid="button-hero-federal">
+            <Button size="lg" variant="outline" className="text-base px-8 font-tech text-[13px]" style={{ borderColor: "rgba(201,162,39,0.5)", color: "#e8dbb5", letterSpacing: "0.12em" }} onClick={() => scrollTo(federalRef)} data-testid="button-hero-federal">
               Take Nationwide Action
             </Button>
           </div>
@@ -372,8 +382,8 @@ export default function Home() {
       <section ref={mapSectionRef} id="map" className="py-14 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="mb-6">
-            <div className="text-xs font-mono uppercase tracking-widest mb-2" style={{ color: GOLD }}>Interactive Map</div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <div className="font-tech text-[11px] mb-3" style={{ color: GOLD }}>Interactive Map</div>
+            <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl text-foreground mb-3" style={{ letterSpacing: "0.005em" }}>
               AI Data Center Projects
             </h2>
             <p className="text-muted-foreground max-w-2xl">
@@ -529,8 +539,8 @@ export default function Home() {
       <section ref={federalRef} id="nationwide-actions" className="py-20 px-4 bg-black/20 border-t" style={{ borderColor: "rgba(201,162,39,0.15)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-10 text-center max-w-3xl mx-auto">
-            <div className="text-xs font-mono uppercase tracking-widest mb-2" style={{ color: GOLD }}>National Campaign</div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <div className="font-tech text-[11px] mb-3" style={{ color: GOLD }}>National Campaign</div>
+            <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl text-foreground mb-4" style={{ letterSpacing: "0.005em" }}>
               Demand Federal Oversight
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -606,8 +616,8 @@ export default function Home() {
       <section className="py-20 px-4 text-center relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,162,39,0.06) 0%, transparent 70%)" }} />
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", color: "#e8dbb5" }}>
-            Every Action Counts. <br /> <em style={{ color: GOLD }}>Start Now.</em>
+          <h2 className="font-display text-6xl sm:text-7xl lg:text-8xl mb-4" style={{ color: "#e8dbb5", letterSpacing: "0.005em" }}>
+            Every Action Counts.<br /><span style={{ color: GOLD }}>Start Now.</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
             Governments and corporations respond to organized pressure. Your email, your signature, your call can be the difference between a new gas plant and a community-powered future. Every action you take here goes directly to the decision-makers.
