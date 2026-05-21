@@ -175,7 +175,7 @@ function ProjectPanel({ project, onClose }: { project: DatacenterProject; onClos
             <StatusBadge status={project.status} />
             <span className="text-xs text-muted-foreground font-mono">{project.state}</span>
           </div>
-          <h2 className="text-lg font-bold leading-tight" style={{ color: "#e8dbb5", fontFamily: "'Cormorant Garamond', 'Playfair Display', serif" }} data-testid="text-project-name">
+          <h2 className="text-lg font-bold leading-tight" style={{ color: "#e8dbb5", fontFamily: "'Bricolage Grotesque', system-ui, sans-serif" }} data-testid="text-project-name">
             {project.name}
           </h2>
           <p className="text-sm text-muted-foreground">{project.company} · {project.location}</p>
@@ -351,12 +351,12 @@ export default function Home() {
         <div className="relative z-10 flex-1 grid grid-cols-1 md:grid-cols-12 gap-y-10 gap-x-10 lg:gap-x-16 items-end py-10 lg:py-14">
           <div className="md:col-span-8">
             <h1 
-              className="text-[60px] sm:text-[78px] md:text-[90px] lg:text-[108px] xl:text-[124px] leading-[0.92] tracking-[-0.025em]" 
-              style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", color: "#f0e8d0", fontWeight: 400 }}
+              className="text-[56px] sm:text-[72px] md:text-[84px] lg:text-[100px] xl:text-[116px] leading-[0.96] tracking-[-0.04em]" 
+              style={{ fontFamily: "'Bricolage Grotesque', system-ui, sans-serif", color: "#f0e8d0", fontWeight: 600 }}
             >
-              <span className="hero-line hero-line-1 block">Is <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 400, fontFamily: "'Cormorant Garamond', serif", letterSpacing: "-0.01em" }}>Big&nbsp;Data</em></span>
-              <span className="hero-line hero-line-2 block" style={{ fontSize: "0.78em", fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, color: "rgba(240,232,208,0.92)" }}>coming to your</span>
-              <span className="hero-line hero-line-3 block"><em style={{ fontStyle: "italic", fontWeight: 400, fontFamily: "'Cormorant Garamond', serif" }}>backyard?</em></span>
+              <span className="hero-line hero-line-1 block">Is <span style={{ color: GOLD, fontWeight: 700 }}>Big&nbsp;Data</span></span>
+              <span className="hero-line hero-line-2 block" style={{ fontWeight: 400, color: "rgba(240,232,208,0.85)" }}>coming to your</span>
+              <span className="hero-line hero-line-3 block" style={{ fontWeight: 700 }}>backyard?</span>
             </h1>
           </div>
 
@@ -377,7 +377,7 @@ export default function Home() {
                 <div className="font-mono text-[10px] uppercase mb-2 opacity-70" style={{ letterSpacing: "0.24em" }}>
                   01 · Local
                 </div>
-                <div className="text-[18px] flex items-center justify-between gap-3 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500 }}>
+                <div className="text-[18px] flex items-center justify-between gap-3 leading-tight" style={{ fontFamily: "'Bricolage Grotesque', system-ui, sans-serif", fontWeight: 500 }}>
                   Find Projects Near You
                   <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
                 </div>
@@ -391,7 +391,7 @@ export default function Home() {
                 <div className="font-mono text-[10px] uppercase mb-2" style={{ letterSpacing: "0.24em", color: GOLD, opacity: 0.75 }}>
                   02 · National
                 </div>
-                <div className="text-[18px] flex items-center justify-between gap-3 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500 }}>
+                <div className="text-[18px] flex items-center justify-between gap-3 leading-tight" style={{ fontFamily: "'Bricolage Grotesque', system-ui, sans-serif", fontWeight: 500 }}>
                   Take Nationwide Action
                   <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
                 </div>
@@ -417,9 +417,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* LEFT: data side */}
           <div>
-            <h2 className="text-4xl sm:text-5xl lg:text-[68px] tracking-[-0.025em] leading-[1.0] mb-7" style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", color: "#f0e8d0", fontWeight: 400 }}>
+            <h2 className="text-4xl sm:text-5xl lg:text-[60px] tracking-[-0.035em] leading-[1.02] mb-7" style={{ fontFamily: "'Bricolage Grotesque', system-ui, sans-serif", color: "#f0e8d0", fontWeight: 600 }}>
               Nobody asked you<br />
-              to <em style={{ fontStyle: "italic", color: GOLD, fontFamily: "'Cormorant Garamond', serif", fontWeight: 400 }}>pay&nbsp;for&nbsp;this.</em>
+              to <span style={{ color: GOLD, fontWeight: 700 }}>pay&nbsp;for&nbsp;this.</span>
             </h2>
             <p className="text-base sm:text-lg leading-[1.65] mb-12 max-w-md" style={{ color: "rgba(232,219,181,0.82)" }}>
               Big Tech's AI buildout is the largest fossil-fueled infrastructure project of the decade. The bill is being slid under your door.
@@ -428,7 +428,7 @@ export default function Home() {
             {/* HERO stat — oversize, on its own */}
             <div className="pb-10 mb-10 border-b" style={{ borderColor: "rgba(201,162,39,0.18)" }}>
               <div className="flex items-baseline gap-5">
-                <div className="text-[96px] sm:text-[120px] lg:text-[148px] leading-[0.88] tracking-[-0.045em]" style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", color: GOLD, fontWeight: 400 }}>
+                <div className="text-[96px] sm:text-[120px] lg:text-[148px] leading-[0.88] tracking-[-0.055em]" style={{ fontFamily: "'Bricolage Grotesque', system-ui, sans-serif", color: GOLD, fontWeight: 600 }}>
                   {STATS[3].value}
                 </div>
                 <div className="text-[14px] sm:text-[15px] leading-[1.5] max-w-[22ch] pb-2" style={{ color: "rgba(232,219,181,0.78)" }}>
@@ -441,7 +441,7 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-x-4 sm:gap-x-6">
               {[STATS[0], STATS[1], STATS[2]].map((stat, i) => (
                 <div key={i} className={i > 0 ? "pl-4 sm:pl-6 border-l" : ""} style={i > 0 ? { borderColor: "rgba(201,162,39,0.18)" } : {}} data-testid={`stat-item-${i}`}>
-                  <div className="text-[40px] sm:text-[48px] lg:text-[56px] leading-[0.95] mb-2 tracking-[-0.025em]" style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", color: GOLD, fontWeight: 400 }}>
+                  <div className="text-[40px] sm:text-[48px] lg:text-[56px] leading-[0.95] mb-2 tracking-[-0.035em]" style={{ fontFamily: "'Bricolage Grotesque', system-ui, sans-serif", color: GOLD, fontWeight: 600 }}>
                     {stat.value}
                   </div>
                   <div className="text-[12px] sm:text-[13px] leading-[1.45]" style={{ color: "rgba(232,219,181,0.7)" }}>
@@ -463,7 +463,7 @@ export default function Home() {
                 className="block w-full h-auto"
                 style={{ aspectRatio: "1080 / 1350" }}
               >
-                <source src="/cover-photo-ig.mp4" type="video/mp4" />
+                <source src="/kevin.mp4" type="video/mp4" />
               </video>
             </div>
           </div>
@@ -475,7 +475,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-6">
             <div className="text-xs font-mono uppercase tracking-widest mb-2" style={{ color: GOLD }}>Interactive Map</div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', serif" }}>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2" style={{ fontFamily: "'Bricolage Grotesque', system-ui, sans-serif" }}>
               AI Data Center Projects
             </h2>
             <p className="text-muted-foreground max-w-2xl">
@@ -632,7 +632,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-10 text-center max-w-3xl mx-auto">
             <div className="text-xs font-mono uppercase tracking-widest mb-2" style={{ color: GOLD }}>National Campaign</div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', serif" }}>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" style={{ fontFamily: "'Bricolage Grotesque', system-ui, sans-serif" }}>
               Demand Federal Oversight
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -708,7 +708,7 @@ export default function Home() {
       <section className="py-20 px-4 text-center relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,162,39,0.06) 0%, transparent 70%)" }} />
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', serif", color: "#e8dbb5" }}>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4" style={{ fontFamily: "'Bricolage Grotesque', system-ui, sans-serif", color: "#e8dbb5" }}>
             Every Action Counts. <br /> <em style={{ color: GOLD }}>Start Now.</em>
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
