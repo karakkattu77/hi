@@ -348,9 +348,9 @@ export default function Home() {
 
         {/* Hero composition — text LEFT, protester photo RIGHT */}
         <div className="relative z-10 max-w-7xl mx-auto py-16 lg:py-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-y-12 gap-x-10 items-center">
-          <div className="lg:col-span-7 text-center lg:text-left">
+          <div className="lg:col-span-5 text-center lg:text-left">
           <h1 
-            className="text-[48px] sm:text-[60px] md:text-[72px] lg:text-[80px] xl:text-[88px] leading-[1.02] tracking-[-0.04em] mb-7" 
+            className="text-[44px] sm:text-[54px] md:text-[62px] lg:text-[68px] xl:text-[76px] leading-[1.04] tracking-[-0.04em] mb-6" 
             style={{ fontFamily: "'Manrope', system-ui, sans-serif", color: "#f0e8d0", fontWeight: 800 }}
           >
             <span className="hero-line hero-line-1 block">Is{" "}
@@ -359,20 +359,10 @@ export default function Home() {
             <span className="hero-line hero-line-2 block">to your <span style={{ color: GOLD }}>backyard</span>?</span>
           </h1>
 
-          <div className="hero-rail flex items-start gap-2.5 max-w-xl mx-auto lg:mx-0 mb-10">
-            <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style={{ flexShrink: 0, marginTop: 6, opacity: 0.85 }}>
-              <g stroke={GOLD} strokeWidth="1.8" strokeLinecap="round">
-                <line x1="12" y1="3" x2="12" y2="21" />
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="5.5" y1="5.5" x2="18.5" y2="18.5" />
-                <line x1="18.5" y1="5.5" x2="5.5" y2="18.5" />
-              </g>
-            </svg>
-            <p className="text-[16px] sm:text-[18px] leading-[1.6] text-left" style={{ color: "rgba(232,219,181,0.78)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+          <p className="hero-rail text-[16px] sm:text-[18px] leading-[1.6] max-w-xl mx-auto lg:mx-0 mb-10 text-center lg:text-left" style={{ color: "rgba(232,219,181,0.78)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
             Big Tech is building hundreds of AI data centers, powered by fossil fuels, draining water supplies, and displacing communities. All without your consent.{" "}
             <strong style={{ color: "#f0e8d0", fontWeight: 600 }}>Together, we can stop it.</strong>
-            </p>
-          </div>
+          </p>
 
           <div className="hero-rail flex flex-wrap items-center justify-center lg:justify-start gap-3">
             <button 
@@ -396,11 +386,11 @@ export default function Home() {
           </div>
           </div>
 
-          <div className="lg:col-span-5 flex justify-center lg:justify-end items-center">
+          <div className="lg:col-span-7 flex justify-center lg:justify-end items-center">
             <img
               src="/protesters.png"
               alt="Community members holding protest signs reading 'People over profit. No data center here.' and 'Brightwood United.'"
-              className="w-full max-w-[640px] h-auto"
+              className="w-full h-auto"
               style={{
                 filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.45)) brightness(1.08) contrast(1.05)"
               }}
@@ -423,88 +413,144 @@ export default function Home() {
       {/* By The Numbers — 50/50 split: data on left, embedded video on right */}
       <section className="relative py-20 sm:py-24 px-6 sm:px-10 lg:px-16 border-y" style={{ background: "rgba(7,14,7,0.55)", borderColor: "rgba(201,162,39,0.18)" }}>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* LEFT: stylized invoice card — 'the bill is being slid under your door' literal */}
-          <div className="relative">
+          {/* LEFT: thermal printer receipt — narrow, monospace, perforated edges */}
+          <div className="relative flex justify-center lg:justify-start items-start py-4">
             <div 
-              className="relative" 
+              className="relative w-full max-w-[380px]" 
               style={{ 
-                background: "#f4ead8",
-                color: "#1a1a1a",
-                transform: "rotate(-1.4deg)",
-                boxShadow: "0 24px 70px -16px rgba(0,0,0,0.65), 0 8px 20px -4px rgba(0,0,0,0.4)",
-                padding: "36px 36px 28px",
-                fontFamily: "'Manrope', system-ui, sans-serif"
+                transform: "rotate(-2deg)",
+                filter: "drop-shadow(0 24px 36px rgba(0,0,0,0.55)) drop-shadow(0 6px 12px rgba(0,0,0,0.3))"
               }}
             >
-              {/* Header — STATEMENT + reference numbers */}
-              <div className="flex items-start justify-between mb-6 pb-5 border-b-2" style={{ borderColor: "#1a1a1a" }}>
-                <div>
-                  <div className="text-[28px] sm:text-[32px] font-extrabold leading-none tracking-tight">STATEMENT</div>
-                  <div className="text-[10px] mt-2 uppercase tracking-[0.2em] opacity-60" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>Itemized cost · Stop Big Data</div>
+              {/* Perforated top edge */}
+              <div className="w-full h-3" style={{
+                background: "#f7f1e1",
+                clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 96% 50%, 92% 100%, 88% 50%, 84% 100%, 80% 50%, 76% 100%, 72% 50%, 68% 100%, 64% 50%, 60% 100%, 56% 50%, 52% 100%, 48% 50%, 44% 100%, 40% 50%, 36% 100%, 32% 50%, 28% 100%, 24% 50%, 20% 100%, 16% 50%, 12% 100%, 8% 50%, 4% 100%, 0% 50%)"
+              }} />
+
+              {/* Receipt body */}
+              <div 
+                style={{ 
+                  background: "#f7f1e1",
+                  color: "#161616",
+                  padding: "20px 22px 12px",
+                  fontFamily: "'IBM Plex Mono', 'Space Mono', monospace",
+                  fontSize: "11px",
+                  lineHeight: 1.45
+                }}
+              >
+                {/* Vendor header — centered, like a real receipt */}
+                <div className="text-center mb-4">
+                  <div className="font-bold text-[14px] tracking-[0.18em]" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>STOP BIG DATA</div>
+                  <div className="text-[9px] tracking-[0.12em] mt-1 opacity-65">A NATIONAL CAMPAIGN</div>
+                  <div className="text-[9px] tracking-[0.12em] opacity-65">STOPBIGDATA.ORG</div>
                 </div>
-                <div className="text-right text-[10px] uppercase tracking-[0.2em] opacity-60 leading-relaxed" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>
-                  <div>NO. 2026 / 01</div>
-                  <div>ISSUED MAY 2026</div>
+
+                {/* Dotted divider */}
+                <div className="text-center text-[10px] opacity-60 mb-3 leading-none select-none">{"·".repeat(40)}</div>
+
+                {/* Date / receipt number */}
+                <div className="flex justify-between text-[9px] tracking-[0.08em] mb-1 opacity-75">
+                  <span>DATE</span>
+                  <span>MAY 21, 2026</span>
                 </div>
-              </div>
+                <div className="flex justify-between text-[9px] tracking-[0.08em] mb-1 opacity-75">
+                  <span>RECEIPT #</span>
+                  <span>2026-001</span>
+                </div>
+                <div className="flex justify-between text-[9px] tracking-[0.08em] mb-3 opacity-75">
+                  <span>CUSTOMER</span>
+                  <span>YOU</span>
+                </div>
 
-              {/* Bill to row */}
-              <div className="flex items-baseline gap-5 mb-7">
-                <div className="text-[10px] uppercase tracking-[0.2em] opacity-60 w-16 shrink-0" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>Bill to</div>
-                <div className="text-[18px] sm:text-[22px] font-bold">American ratepayers, communities, and aquifers.</div>
-              </div>
+                {/* Dotted divider */}
+                <div className="text-center text-[10px] opacity-60 mb-2 leading-none select-none">{"·".repeat(40)}</div>
 
-              {/* Column headers */}
-              <div className="flex justify-between text-[9px] uppercase tracking-[0.2em] opacity-60 pb-2 border-b border-dashed" style={{ fontFamily: "'IBM Plex Mono', monospace", borderColor: "rgba(26,26,26,0.35)" }}>
-                <div>Item / Description</div>
-                <div>Amount</div>
-              </div>
+                {/* Column header */}
+                <div className="flex justify-between text-[9px] tracking-[0.1em] font-bold mb-2">
+                  <span>QTY  ITEM</span>
+                  <span>AMOUNT</span>
+                </div>
 
-              {/* Line items */}
-              <div>
-                <div className="flex justify-between items-center gap-4 py-4 border-b border-dashed" style={{ borderColor: "rgba(26,26,26,0.22)" }}>
-                  <div className="text-[13px] sm:text-[14px] leading-snug max-w-[60%]">
-                    Ratepayer-funded grid upgrades<br/>
-                    <span className="opacity-55 text-[12px]">that Big Tech isn't paying for</span>
+                {/* Items — each is description with dots leading to amount */}
+                <div className="space-y-2 mb-2">
+                  <div className="flex justify-between items-baseline gap-1">
+                    <div className="leading-tight max-w-[60%]">
+                      <div>1 GRID UPGRADES</div>
+                      <div className="text-[9px] opacity-65 mt-0.5">RATEPAYER-FUNDED</div>
+                    </div>
+                    <div className="font-bold whitespace-nowrap">$50,000,000,000</div>
                   </div>
-                  <div className="text-[44px] sm:text-[60px] font-black leading-none tracking-tight whitespace-nowrap">$50B</div>
+                  <div className="flex justify-between items-baseline gap-1">
+                    <div className="leading-tight max-w-[60%]">
+                      <div>1 US ELECTRICITY</div>
+                      <div className="text-[9px] opacity-65 mt-0.5">CONSUMED BY DATA CTRS</div>
+                    </div>
+                    <div className="font-bold whitespace-nowrap">3.5%</div>
+                  </div>
+                  <div className="flex justify-between items-baseline gap-1">
+                    <div className="leading-tight max-w-[60%]">
+                      <div>1 ARRIVAL OF 10%</div>
+                      <div className="text-[9px] opacity-65 mt-0.5">AI DATA CTR POWER</div>
+                    </div>
+                    <div className="font-bold whitespace-nowrap">YR 2030</div>
+                  </div>
+                  <div className="flex justify-between items-baseline gap-1">
+                    <div className="leading-tight max-w-[60%]">
+                      <div>1 WATER USE / DAY</div>
+                      <div className="text-[9px] opacity-65 mt-0.5">BY 2027, GALLONS</div>
+                    </div>
+                    <div className="font-bold whitespace-nowrap">6,600,000,000</div>
+                  </div>
                 </div>
 
-                <div className="flex justify-between items-center gap-4 py-4 border-b border-dashed" style={{ borderColor: "rgba(26,26,26,0.22)" }}>
-                  <div className="text-[13px] sm:text-[14px] leading-snug max-w-[60%]">
-                    U.S. electricity already consumed by data centers
-                  </div>
-                  <div className="text-[36px] sm:text-[48px] font-black leading-none tracking-tight whitespace-nowrap">3.5%</div>
+                {/* Dotted divider */}
+                <div className="text-center text-[10px] opacity-60 mb-2 leading-none select-none">{"·".repeat(40)}</div>
+
+                {/* Subtotal / total */}
+                <div className="flex justify-between text-[10px] mb-1">
+                  <span className="opacity-75">SUBTOTAL</span>
+                  <span>$50B + EVERYTHING ELSE</span>
+                </div>
+                <div className="flex justify-between text-[10px] mb-1">
+                  <span className="opacity-75">BIG TECH PAID</span>
+                  <span>$0.00</span>
+                </div>
+                <div className="flex justify-between font-bold text-[13px] mt-3 mb-2 pt-2 border-t-2 border-double" style={{ borderColor: "#161616" }}>
+                  <span>TOTAL DUE</span>
+                  <span className="text-[18px]">YOU</span>
                 </div>
 
-                <div className="flex justify-between items-center gap-4 py-4 border-b border-dashed" style={{ borderColor: "rgba(26,26,26,0.22)" }}>
-                  <div className="text-[13px] sm:text-[14px] leading-snug max-w-[60%]">
-                    Year AI data centers hit 10% of U.S. power
-                  </div>
-                  <div className="text-[36px] sm:text-[48px] font-black leading-none tracking-tight whitespace-nowrap">2030</div>
+                {/* Solid double rule */}
+                <div className="text-center text-[10px] opacity-60 mb-3 mt-3 leading-none select-none">{"=".repeat(38)}</div>
+
+                {/* Closing message */}
+                <div className="text-center mb-3">
+                  <div className="text-[10px] tracking-[0.15em] font-bold">NOBODY ASKED YOU</div>
+                  <div className="text-[10px] tracking-[0.15em] font-bold">TO PAY FOR THIS.</div>
                 </div>
 
-                <div className="flex justify-between items-center gap-4 py-4 border-b border-dashed" style={{ borderColor: "rgba(26,26,26,0.22)" }}>
-                  <div className="text-[13px] sm:text-[14px] leading-snug max-w-[60%]">
-                    Gallons of water consumed<br/>daily by 2027
-                  </div>
-                  <div className="text-[36px] sm:text-[48px] font-black leading-none tracking-tight whitespace-nowrap">6.6B</div>
+                {/* Tiny barcode-ish line */}
+                <div className="flex justify-center gap-[2px] mb-2 opacity-80" aria-hidden="true">
+                  {[2,4,1,3,2,5,1,2,4,3,2,1,5,2,3,1,4,2,1,3,5,2,1,4,2,3,1,5,2,4,1,2,3,5].map((w, i) => (
+                    <span key={i} style={{ display: "inline-block", width: `${w}px`, height: "26px", background: "#161616" }} />
+                  ))}
+                </div>
+                <div className="text-center text-[9px] tracking-[0.15em] opacity-65">SBD-2026-USA-001</div>
+
+                {/* Footer */}
+                <div className="text-center mt-3 pt-2 border-t border-dashed" style={{ borderColor: "rgba(22,22,22,0.35)" }}>
+                  <div className="text-[9px] tracking-[0.1em] opacity-65">THANK YOU FOR YOUR ATTENTION</div>
+                  <div className="text-[9px] tracking-[0.1em] opacity-65 mt-0.5">PLEASE TAKE ACTION ↓</div>
                 </div>
               </div>
 
-              {/* Total */}
-              <div className="mt-5 pt-5 border-t-2 flex justify-between items-baseline" style={{ borderColor: "#1a1a1a" }}>
-                <div className="text-[12px] sm:text-[14px] font-bold uppercase tracking-[0.18em]" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>TOTAL DUE</div>
-                <div className="text-[60px] sm:text-[88px] font-black leading-none tracking-tighter">YOU</div>
-              </div>
-
-              {/* Footer */}
-              <div className="mt-6 pt-4 border-t border-dashed flex items-center justify-between gap-4" style={{ borderColor: "rgba(26,26,26,0.35)" }}>
-                <div className="text-[10px] uppercase tracking-[0.2em] opacity-55" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>Nobody asked you to pay for this.</div>
-                <div className="text-[10px] uppercase tracking-[0.2em] opacity-55" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>Pg. 1 of 1</div>
-              </div>
-            </div>
-          </div>
+              {/* Perforated bottom edge */}
+              <div className="w-full h-3" style={{
+                background: "#f7f1e1",
+                clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 96% 50%, 92% 0%, 88% 50%, 84% 0%, 80% 50%, 76% 0%, 72% 50%, 68% 0%, 64% 50%, 60% 0%, 56% 50%, 52% 0%, 48% 50%, 44% 0%, 40% 50%, 36% 0%, 32% 50%, 28% 0%, 24% 50%, 20% 0%, 16% 50%, 12% 0%, 8% 50%, 4% 0%, 0% 50%)"
+              }} />
+            </div>          </div>
 
           {/* RIGHT: embedded video */}
           <div className="relative">
