@@ -352,6 +352,36 @@ export default function Home() {
         >
           <ChevronDown className="w-6 h-6" />
         </button>
+
+        {/* Xurya-inspired Featured Fight card overlay */}
+        <button
+          onClick={() => {
+            const target = DATACENTERS[0];
+            handleMarkerClick(target);
+            scrollTo(mapSectionRef);
+          }}
+          className="hidden lg:flex absolute bottom-16 right-10 xl:right-16 z-20 max-w-[300px] flex-col items-start text-left rounded-xl p-5 transition-all hover:-translate-y-1 backdrop-blur-md"
+          style={{ 
+            background: "rgba(240,232,208,0.96)",
+            color: "#101910",
+            boxShadow: "0 12px 40px -8px rgba(0,0,0,0.5)"
+          }}
+          data-testid="card-featured-fight"
+        >
+          <div className="font-mono text-[10px] uppercase mb-3" style={{ color: "rgba(102,80,16,0.85)", letterSpacing: "0.18em" }}>
+            Today's Featured Fight
+          </div>
+          <h3 className="text-[22px] mb-2 leading-[1.15] font-bold" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#101910" }}>
+            {DATACENTERS[0].name.replace(/^Microsoft\s/, '')}
+          </h3>
+          <p className="text-[12px] mb-4 leading-snug" style={{ color: "rgba(16,25,16,0.7)" }}>
+            {DATACENTERS[0].location} — {DATACENTERS[0].description.slice(0, 90)}{DATACENTERS[0].description.length > 90 ? '…' : ''}
+          </p>
+          <div className="flex items-center gap-2 text-[10px] font-bold uppercase" style={{ color: "#866b1a", letterSpacing: "0.16em" }}>
+            View on the Map
+            <ArrowRight className="w-3 h-3" />
+          </div>
+        </button>
       </section>
 
       {/* Stats bar */}
