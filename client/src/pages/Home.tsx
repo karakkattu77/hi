@@ -346,29 +346,37 @@ export default function Home() {
           <rect width="100%" height="100%" filter="url(#hero-grain)"/>
         </svg>
 
-        {/* Floating LIVE badge — top-left corner, Habitline-style pill */}
-        <div className="hero-eyebrow hidden md:flex absolute top-10 left-10 lg:left-16 z-20 items-center gap-2.5 px-4 py-2 rounded-full backdrop-blur-md" 
-          style={{ background: "rgba(15,25,15,0.7)", border: "1px solid rgba(201,162,39,0.3)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
-          <span className="live-dot" style={{ background: GOLD }} aria-hidden="true" />
-          <span className="text-[11px] font-medium" style={{ color: "rgba(232,219,181,0.85)", letterSpacing: "0.04em" }}>
-            Stop Big Data <span style={{ color: "rgba(232,219,181,0.5)" }}>· A National Campaign</span>
-          </span>
-        </div>
-
         {/* Centered hero content */}
         <div className="relative z-10 max-w-4xl mx-auto text-center py-20 lg:py-24">
           <h1 
             className="text-[52px] sm:text-[68px] md:text-[80px] lg:text-[96px] xl:text-[108px] leading-[1.02] tracking-[-0.04em] mb-7" 
             style={{ fontFamily: "'Manrope', system-ui, sans-serif", color: "#f0e8d0", fontWeight: 800 }}
           >
-            <span className="hero-line hero-line-1 block">Is <span style={{ color: GOLD }}>Big&nbsp;Data</span> coming</span>
+            <span className="hero-line hero-line-1 block">Is{" "}
+              <span style={{ position: "relative", display: "inline-block" }}>
+                <span style={{ color: GOLD, position: "relative", zIndex: 1 }}>Big&nbsp;Data</span>
+                <svg aria-hidden="true" viewBox="0 0 220 100" preserveAspectRatio="none" style={{ position: "absolute", left: "-6%", top: "-14%", width: "112%", height: "132%", pointerEvents: "none", zIndex: 0, overflow: "visible" }}>
+                  <path d="M 28,58 C 14,40 34,18 76,12 C 124,6 178,10 200,32 C 218,52 204,80 158,90 C 110,98 50,95 24,80 C 8,68 12,46 30,40" stroke={GOLD} strokeWidth="2.6" strokeLinecap="round" fill="none" opacity="0.85" />
+                </svg>
+              </span>{" "}
+              coming</span>
             <span className="hero-line hero-line-2 block">to your <span style={{ color: GOLD }}>backyard</span>?</span>
           </h1>
 
-          <p className="hero-rail text-[16px] sm:text-[18px] leading-[1.6] max-w-2xl mx-auto mb-10" style={{ color: "rgba(232,219,181,0.78)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+          <div className="hero-rail flex items-start gap-2.5 max-w-2xl mx-auto mb-10">
+            <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style={{ flexShrink: 0, marginTop: 6, opacity: 0.85 }}>
+              <g stroke={GOLD} strokeWidth="1.8" strokeLinecap="round">
+                <line x1="12" y1="3" x2="12" y2="21" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="5.5" y1="5.5" x2="18.5" y2="18.5" />
+                <line x1="18.5" y1="5.5" x2="5.5" y2="18.5" />
+              </g>
+            </svg>
+            <p className="text-[16px] sm:text-[18px] leading-[1.6] text-left" style={{ color: "rgba(232,219,181,0.78)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
             Big Tech is building hundreds of AI data centers — powered by fossil fuels, draining water supplies, and displacing communities. All without your consent.{" "}
             <strong style={{ color: "#f0e8d0", fontWeight: 600 }}>Together, we can stop it.</strong>
-          </p>
+            </p>
+          </div>
 
           <div className="hero-rail flex flex-wrap items-center justify-center gap-3">
             <button 
@@ -391,42 +399,6 @@ export default function Home() {
             </button>
           </div>
         </div>
-
-        {/* Floating "Today's Featured Fight" card — bottom-right, Habitline-style UI card */}
-        <button
-          onClick={() => {
-            const target = DATACENTERS[0];
-            handleMarkerClick(target);
-            scrollTo(mapSectionRef);
-          }}
-          className="hidden lg:flex hero-scroll absolute bottom-10 right-10 xl:right-16 z-20 max-w-[320px] flex-col items-start text-left rounded-2xl p-5 backdrop-blur-md transition-all hover:-translate-y-1"
-          style={{ 
-            background: "rgba(15,25,15,0.85)",
-            border: "1px solid rgba(201,162,39,0.25)",
-            boxShadow: "0 16px 50px -12px rgba(0,0,0,0.7)",
-            fontFamily: "'Manrope', system-ui, sans-serif"
-          }}
-          data-testid="card-featured-fight"
-        >
-          <div className="flex items-center gap-2 mb-4">
-            <div className="flex items-center justify-center w-7 h-7 rounded-full" style={{ background: GOLD }}>
-              <AlertTriangle className="w-3.5 h-3.5" style={{ color: FOREST }} />
-            </div>
-            <div className="text-[10px] font-semibold uppercase" style={{ color: GOLD, letterSpacing: "0.16em" }}>
-              Today's Featured Fight
-            </div>
-          </div>
-          <h3 className="text-[18px] font-bold mb-1.5 leading-tight" style={{ color: "#f0e8d0" }}>
-            {DATACENTERS[0].name.replace(/^Microsoft\s/, '')}
-          </h3>
-          <p className="text-[12px] mb-4 leading-snug" style={{ color: "rgba(232,219,181,0.65)" }}>
-            {DATACENTERS[0].location}
-          </p>
-          <div className="flex items-center gap-1.5 text-[12px] font-semibold pt-3 border-t w-full" style={{ color: GOLD, borderColor: "rgba(201,162,39,0.2)" }}>
-            View on the map
-            <ArrowRight className="w-3 h-3" />
-          </div>
-        </button>
 
         {/* Minimal scroll cue */}
         <button 
@@ -454,10 +426,24 @@ export default function Home() {
             </p>
 
             {/* HERO stat — oversize, on its own */}
-            <div className="pb-10 mb-10 border-b" style={{ borderColor: "rgba(201,162,39,0.18)" }}>
+            <div className="pb-10 mb-10">
               <div className="flex items-baseline gap-5">
-                <div className="text-[96px] sm:text-[120px] lg:text-[148px] leading-[0.88] tracking-[-0.055em]" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: GOLD, fontWeight: 500 }}>
-                  {STATS[3].value}
+                <div className="relative">
+                  <div className="text-[96px] sm:text-[120px] lg:text-[148px] leading-[0.88] tracking-[-0.055em]" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: GOLD, fontWeight: 500 }}>
+                    {STATS[3].value}
+                  </div>
+                  <svg aria-hidden="true" width="44" height="44" viewBox="0 0 60 60" style={{ position: "absolute", right: "-36px", top: "-10px" }}>
+                    <g stroke={GOLD} strokeWidth="1.8" strokeLinecap="round" opacity="0.9">
+                      <line x1="30" y1="6" x2="30" y2="22" />
+                      <line x1="30" y1="38" x2="30" y2="54" />
+                      <line x1="6" y1="30" x2="22" y2="30" />
+                      <line x1="38" y1="30" x2="54" y2="30" />
+                      <line x1="12" y1="12" x2="22" y2="22" />
+                      <line x1="38" y1="38" x2="48" y2="48" />
+                      <line x1="48" y1="12" x2="38" y2="22" />
+                      <line x1="12" y1="48" x2="22" y2="38" />
+                    </g>
+                  </svg>
                 </div>
                 <div className="text-[14px] sm:text-[15px] leading-[1.5] max-w-[22ch] pb-2" style={{ color: "rgba(232,219,181,0.78)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
                   {STATS[3].label}.
