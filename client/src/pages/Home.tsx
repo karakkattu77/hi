@@ -353,10 +353,9 @@ export default function Home() {
             className="text-[44px] sm:text-[54px] md:text-[62px] lg:text-[68px] xl:text-[76px] leading-[1.04] tracking-[-0.04em] mb-6" 
             style={{ fontFamily: "'Manrope', system-ui, sans-serif", color: "#f0e8d0", fontWeight: 800 }}
           >
-            <span className="hero-line hero-line-1 block">Is{" "}
-              <span style={{ color: GOLD }}>Big&nbsp;Data</span>{" "}
-              coming</span>
-            <span className="hero-line hero-line-2 block">to your <span style={{ color: GOLD }}>backyard</span>?</span>
+            <span className="hero-line hero-line-1 block">Is <span style={{ color: GOLD }}>Big&nbsp;Data</span></span>
+            <span className="hero-line hero-line-2 block">coming to your</span>
+            <span className="hero-line hero-line-3 block"><span style={{ color: GOLD }}>backyard</span>?</span>
           </h1>
 
           <p className="hero-rail text-[16px] sm:text-[18px] leading-[1.6] max-w-xl mx-auto lg:mx-0 mb-10 text-center lg:text-left" style={{ color: "rgba(232,219,181,0.78)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
