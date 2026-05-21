@@ -314,45 +314,96 @@ export default function Home() {
         onActNow={() => scrollTo(federalRef)} 
       />
 
-      {/* Hero */}
-      <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden pt-0">
+      {/* Hero — editorial masthead composition */}
+      <section className="relative min-h-[92vh] flex flex-col px-6 sm:px-10 lg:px-16 overflow-hidden">
+        {/* Background globe */}
         <div className="absolute inset-0">
           <img 
             src="/globe-bg.png" 
             alt="" 
             className="w-full h-full object-cover" 
-            style={{ filter: "brightness(0.55) saturate(0.85)", transform: "scale(1.06) translateY(-4%)", transformOrigin: "top center" }} 
+            style={{ filter: "brightness(0.42) saturate(0.78) contrast(1.05)", transform: "scale(1.08) translateY(2%) translateX(8%)", transformOrigin: "center" }} 
           />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(7,14,7,0.3) 0%, rgba(7,14,7,0.1) 50%, rgba(7,14,7,0.9) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(95deg, rgba(7,14,7,0.92) 0%, rgba(7,14,7,0.55) 55%, rgba(7,14,7,0.75) 100%)" }} />
         </div>
-        
-        <div className="relative z-10 max-w-5xl mx-auto space-y-7 -mt-10">
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold leading-none tracking-tight" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#f0e8d0" }}>
-            Is <em style={{ color: GOLD, fontStyle: "italic" }}>Big Data</em> <br /> Coming To <br /> Your Backyard?
-          </h1>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: "rgba(232,219,181,0.75)" }}>
-            Big Tech is building hundreds of AI data centers powered by fossil fuels, draining water supplies, and displacing communities all without your consent.{" "}
-            <strong style={{ color: "#e8dbb5" }}>Together, we can stop it.</strong>
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Button size="lg" className="text-base px-8" style={{ background: GOLD, color: FOREST }} onClick={() => scrollTo(mapSectionRef)} data-testid="button-hero-map">
-              Find Projects Near You <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-            <Button size="lg" variant="outline" className="text-base px-8" style={{ borderColor: "rgba(201,162,39,0.4)", color: "#e8dbb5" }} onClick={() => scrollTo(federalRef)} data-testid="button-hero-federal">
-              Take Nationwide Action
-            </Button>
+
+        {/* Top masthead row — campaign label left, volume right */}
+        <div className="relative z-10 pt-10 pb-2 flex items-center justify-between border-b" style={{ borderColor: "rgba(201,162,39,0.18)" }}>
+          <div className="font-mono text-[10px] uppercase inline-flex items-center gap-3 pb-4" style={{ color: GOLD, letterSpacing: "0.32em" }}>
+            <span style={{ display: "inline-block", width: 28, height: 1, background: GOLD, opacity: 0.55 }} />
+            Stop Big Data
+            <span style={{ display: "inline-block", width: 4, height: 4, background: GOLD, opacity: 0.55, borderRadius: "50%" }} />
+            A National Campaign
+          </div>
+          <div className="hidden md:block font-mono text-[10px] uppercase pb-4" style={{ color: "rgba(201,162,39,0.7)", letterSpacing: "0.32em" }}>
+            Vol. 01 — Spring 2026
           </div>
         </div>
 
-        <button 
-          onClick={() => scrollTo(mapSectionRef)}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground animate-bounce"
-          aria-label="Scroll down"
-          data-testid="button-scroll-down"
-        >
-          <ChevronDown className="w-6 h-6" />
-        </button>
+        {/* Main composition — headline left, subhead+CTA right */}
+        <div className="relative z-10 flex-1 grid grid-cols-1 md:grid-cols-12 gap-y-10 gap-x-10 lg:gap-x-16 items-end py-12 lg:py-16">
+          <div className="md:col-span-8 lg:col-span-8">
+            <h1 
+              className="text-[60px] sm:text-[88px] lg:text-[132px] xl:text-[148px] leading-[0.92] tracking-[-0.035em]" 
+              style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}
+            >
+              Is <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 500 }}>Big Data</em><br />
+              coming to your<br />
+              <em style={{ fontStyle: "italic", fontWeight: 500 }}>backyard?</em>
+            </h1>
+          </div>
 
+          <div className="md:col-span-4 lg:col-span-4 md:pl-6 md:border-l max-w-sm" style={{ borderColor: "rgba(201,162,39,0.18)" }}>
+            <div className="font-mono text-[10px] uppercase mb-5" style={{ color: GOLD, letterSpacing: "0.28em", opacity: 0.85 }}>
+              The Case
+            </div>
+            <p className="text-[15px] sm:text-base leading-[1.7] mb-7" style={{ color: "rgba(232,219,181,0.82)" }}>
+              Big Tech is building hundreds of AI data centers — powered by fossil fuels, draining water supplies, and displacing communities. All without your consent.{" "}
+              <strong style={{ color: "#f0e8d0", fontWeight: 500 }}>Together, we can stop it.</strong>
+            </p>
+            <div className="flex flex-col gap-4 items-start">
+              <Button 
+                size="lg" 
+                className="text-[15px] px-7 py-6 h-auto" 
+                style={{ background: GOLD, color: FOREST, borderRadius: "2px" }} 
+                onClick={() => scrollTo(mapSectionRef)} 
+                data-testid="button-hero-map"
+              >
+                Find Projects Near You <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+              <button 
+                className="text-[14px] inline-flex items-center gap-2 pb-1 border-b transition-opacity hover:opacity-70" 
+                style={{ color: "#f0e8d0", borderColor: "rgba(201,162,39,0.55)" }}
+                onClick={() => scrollTo(federalRef)} 
+                data-testid="button-hero-federal"
+              >
+                Take Nationwide Action <ArrowRight className="w-3 h-3" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom strip — scroll cue + breadcrumbs */}
+        <div className="relative z-10 flex items-center justify-between pb-8 pt-4 border-t" style={{ borderColor: "rgba(201,162,39,0.18)" }}>
+          <button 
+            onClick={() => scrollTo(mapSectionRef)}
+            className="font-mono text-[10px] uppercase inline-flex items-center gap-2 transition-opacity hover:opacity-100" 
+            style={{ color: "rgba(232,219,181,0.6)", letterSpacing: "0.28em" }}
+            data-testid="button-scroll-down"
+          >
+            Scroll
+            <ChevronDown className="w-3 h-3" />
+          </button>
+          <div className="hidden md:flex items-center gap-5 font-mono text-[10px] uppercase" style={{ color: "rgba(232,219,181,0.5)", letterSpacing: "0.28em" }}>
+            <span>01 · The Case</span>
+            <span style={{ display: "inline-block", width: 12, height: 1, background: "rgba(232,219,181,0.4)" }} />
+            <span>02 · The Numbers</span>
+            <span style={{ display: "inline-block", width: 12, height: 1, background: "rgba(232,219,181,0.4)" }} />
+            <span>03 · The Map</span>
+            <span style={{ display: "inline-block", width: 12, height: 1, background: "rgba(232,219,181,0.4)" }} />
+            <span>04 · Take Action</span>
+          </div>
+        </div>
       </section>
 
       {/* By The Numbers — editorial stats spread */}
