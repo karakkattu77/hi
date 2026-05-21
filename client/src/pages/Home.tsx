@@ -347,30 +347,22 @@ export default function Home() {
           <rect width="100%" height="100%" filter="url(#hero-grain)"/>
         </svg>
 
-        {/* Top eyebrow — campaign label with live pulse */}
-        <div className="relative z-10 pt-10 pb-6 hero-eyebrow">
-          <div className="font-mono text-[10px] uppercase inline-flex items-center gap-3" style={{ color: GOLD, letterSpacing: "0.32em" }}>
-            <span className="live-dot" style={{ background: GOLD }} aria-hidden="true" />
-            Stop Big Data — A National Campaign
-          </div>
-        </div>
-
         {/* Main composition — headline left, subhead+CTA boxes right */}
         <div className="relative z-10 flex-1 grid grid-cols-1 md:grid-cols-12 gap-y-10 gap-x-10 lg:gap-x-16 items-end py-10 lg:py-14">
           <div className="md:col-span-8">
             <h1 
-              className="text-[52px] sm:text-[72px] md:text-[80px] lg:text-[96px] xl:text-[108px] leading-[0.94] tracking-[-0.03em]" 
-              style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}
+              className="text-[60px] sm:text-[78px] md:text-[90px] lg:text-[108px] xl:text-[124px] leading-[0.92] tracking-[-0.025em]" 
+              style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", color: "#f0e8d0", fontWeight: 400 }}
             >
-              <span className="hero-line hero-line-1 block">Is <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 500 }}>Big Data</em></span>
-              <span className="hero-line hero-line-2 block">coming to your</span>
-              <span className="hero-line hero-line-3 block"><em style={{ fontStyle: "italic", fontWeight: 500 }}>backyard?</em></span>
+              <span className="hero-line hero-line-1 block">Is <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 400, fontFamily: "'Cormorant Garamond', serif", letterSpacing: "-0.01em" }}>Big&nbsp;Data</em></span>
+              <span className="hero-line hero-line-2 block" style={{ fontSize: "0.78em", fontFamily: "'Cormorant Garamond', serif", fontWeight: 500, color: "rgba(240,232,208,0.92)" }}>coming to your</span>
+              <span className="hero-line hero-line-3 block"><em style={{ fontStyle: "italic", fontWeight: 400, fontFamily: "'Cormorant Garamond', serif" }}>backyard?</em></span>
             </h1>
           </div>
 
           <div className="md:col-span-4 max-w-sm hero-rail">
             <p className="text-[15px] sm:text-base leading-[1.7] mb-7" style={{ color: "rgba(232,219,181,0.85)" }}>
-              Big Tech is building hundreds of AI data centers — powered by fossil fuels, draining water supplies, and displacing communities. All without your consent.{" "}
+              Big Tech is building hundreds of AI data centers, powered by fossil fuels, draining water supplies, and displacing communities. All without your consent.{" "}
               <strong style={{ color: "#f0e8d0", fontWeight: 500 }}>Together, we can stop it.</strong>
             </p>
 
@@ -425,25 +417,34 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* LEFT: data side */}
           <div>
-            <div className="font-mono text-[11px] uppercase mb-5 inline-flex items-center gap-3" style={{ color: GOLD, opacity: 0.85, letterSpacing: "0.32em" }}>
-              <span style={{ display: "inline-block", width: 24, height: 1, background: GOLD, opacity: 0.55 }} />
-              By The Numbers
-            </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-[64px] tracking-[-0.025em] leading-[1.02] mb-6" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}>
-              The <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 400 }}>cost</em> of inaction.
+            <h2 className="text-4xl sm:text-5xl lg:text-[68px] tracking-[-0.025em] leading-[1.0] mb-7" style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", color: "#f0e8d0", fontWeight: 400 }}>
+              Nobody asked you<br />
+              to <em style={{ fontStyle: "italic", color: GOLD, fontFamily: "'Cormorant Garamond', serif", fontWeight: 400 }}>pay&nbsp;for&nbsp;this.</em>
             </h2>
-            <p className="text-base sm:text-lg leading-[1.65] mb-10 max-w-md" style={{ color: "rgba(232,219,181,0.78)" }}>
-              Big Tech's AI buildout is the largest fossil-fueled infrastructure project of the decade. Here is what is at stake.
+            <p className="text-base sm:text-lg leading-[1.65] mb-12 max-w-md" style={{ color: "rgba(232,219,181,0.82)" }}>
+              Big Tech's AI buildout is the largest fossil-fueled infrastructure project of the decade. The bill is being slid under your door.
             </p>
 
-            {/* 4 key stats in a 2x2 grid */}
-            <div className="grid grid-cols-2 gap-y-10 gap-x-6 sm:gap-x-10 pt-8 border-t" style={{ borderColor: "rgba(201,162,39,0.18)" }}>
-              {STATS.slice(0, 4).map((stat, i) => (
-                <div key={i} data-testid={`stat-item-${i}`}>
-                  <div className="text-[56px] sm:text-[64px] lg:text-[80px] leading-[0.95] mb-3 tracking-[-0.03em]" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: GOLD, fontWeight: 500 }}>
+            {/* HERO stat — oversize, on its own */}
+            <div className="pb-10 mb-10 border-b" style={{ borderColor: "rgba(201,162,39,0.18)" }}>
+              <div className="flex items-baseline gap-5">
+                <div className="text-[96px] sm:text-[120px] lg:text-[148px] leading-[0.88] tracking-[-0.045em]" style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", color: GOLD, fontWeight: 400 }}>
+                  {STATS[3].value}
+                </div>
+                <div className="text-[14px] sm:text-[15px] leading-[1.5] max-w-[22ch] pb-2" style={{ color: "rgba(232,219,181,0.78)" }}>
+                  {STATS[3].label}.
+                </div>
+              </div>
+            </div>
+
+            {/* Supporting 3 stats — smaller, set side by side with hairline rules */}
+            <div className="grid grid-cols-3 gap-x-4 sm:gap-x-6">
+              {[STATS[0], STATS[1], STATS[2]].map((stat, i) => (
+                <div key={i} className={i > 0 ? "pl-4 sm:pl-6 border-l" : ""} style={i > 0 ? { borderColor: "rgba(201,162,39,0.18)" } : {}} data-testid={`stat-item-${i}`}>
+                  <div className="text-[40px] sm:text-[48px] lg:text-[56px] leading-[0.95] mb-2 tracking-[-0.025em]" style={{ fontFamily: "'DM Serif Display', 'Cormorant Garamond', Georgia, serif", color: GOLD, fontWeight: 400 }}>
                     {stat.value}
                   </div>
-                  <div className="text-[13px] sm:text-sm leading-[1.55]" style={{ color: "rgba(232,219,181,0.78)" }}>
+                  <div className="text-[12px] sm:text-[13px] leading-[1.45]" style={{ color: "rgba(232,219,181,0.7)" }}>
                     {stat.label}
                   </div>
                 </div>
@@ -464,10 +465,6 @@ export default function Home() {
               >
                 <source src="/cover-photo-ig.mp4" type="video/mp4" />
               </video>
-            </div>
-            <div className="font-mono text-[10px] uppercase mt-4 inline-flex items-center gap-2" style={{ color: "rgba(232,219,181,0.55)", letterSpacing: "0.28em" }}>
-              <span style={{ display: "inline-block", width: 16, height: 1, background: "rgba(232,219,181,0.4)" }} />
-              The Power Shift Project · Cover
             </div>
           </div>
         </div>
