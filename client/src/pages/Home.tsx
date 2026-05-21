@@ -175,7 +175,7 @@ function ProjectPanel({ project, onClose }: { project: DatacenterProject; onClos
             <StatusBadge status={project.status} />
             <span className="text-xs text-muted-foreground font-mono">{project.state}</span>
           </div>
-          <h2 className="text-lg font-bold leading-tight" style={{ color: "#e8dbb5", fontFamily: "'Playfair Display', serif" }} data-testid="text-project-name">
+          <h2 className="text-lg font-bold leading-tight" style={{ color: "#e8dbb5", fontFamily: "'Cormorant Garamond', 'Playfair Display', serif" }} data-testid="text-project-name">
             {project.name}
           </h2>
           <p className="text-sm text-muted-foreground">{project.company} · {project.location}</p>
@@ -327,7 +327,7 @@ export default function Home() {
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto space-y-7 -mt-10">
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold leading-none tracking-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#f0e8d0" }}>
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold leading-none tracking-tight" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#f0e8d0" }}>
             Is <em style={{ color: GOLD, fontStyle: "italic" }}>Big Data</em> <br /> Coming To <br /> Your Backyard?
           </h1>
           <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: "rgba(232,219,181,0.75)" }}>
@@ -365,7 +365,7 @@ export default function Home() {
                 <span style={{ display: "inline-block", width: 24, height: 1, background: GOLD, opacity: 0.55 }} />
                 By The Numbers
               </div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl tracking-[-0.02em] leading-[1.04]" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl tracking-[-0.02em] leading-[1.04]" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}>
                 The <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 400 }}>cost</em> of inaction.
               </h2>
             </div>
@@ -387,7 +387,7 @@ export default function Home() {
                   style={showLeftRule ? { borderColor: "rgba(201,162,39,0.18)" } : {}}
                   data-testid={`stat-item-${i}`}
                 >
-                  <div className="text-[72px] sm:text-[88px] lg:text-[104px] leading-[0.95] mb-4 tracking-[-0.035em]" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: GOLD, fontWeight: 500 }}>
+                  <div className="text-[72px] sm:text-[88px] lg:text-[104px] leading-[0.95] mb-4 tracking-[-0.035em]" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: GOLD, fontWeight: 500 }}>
                     {stat.value}
                   </div>
                   <div className="text-[15px] sm:text-base leading-[1.55] max-w-[26ch]" style={{ color: "rgba(232,219,181,0.78)" }}>
@@ -405,7 +405,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-6">
             <div className="text-xs font-mono uppercase tracking-widest mb-2" style={{ color: GOLD }}>Interactive Map</div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', serif" }}>
               AI Data Center Projects
             </h2>
             <p className="text-muted-foreground max-w-2xl">
@@ -562,7 +562,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-10 text-center max-w-3xl mx-auto">
             <div className="text-xs font-mono uppercase tracking-widest mb-2" style={{ color: GOLD }}>National Campaign</div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', serif" }}>
               Demand Federal Oversight
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -638,7 +638,7 @@ export default function Home() {
       <section className="py-20 px-4 text-center relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,162,39,0.06) 0%, transparent 70%)" }} />
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", color: "#e8dbb5" }}>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', serif", color: "#e8dbb5" }}>
             Every Action Counts. <br /> <em style={{ color: GOLD }}>Start Now.</em>
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
