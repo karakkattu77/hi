@@ -396,16 +396,17 @@ export default function Home() {
           </div>
           </div>
 
-          <div className="lg:col-span-5 flex justify-center lg:justify-end items-center"> — bottom-right of hero, B&W cutout against dark green */}
-        <img
-            src="/protesters.png"
-            alt="Community members holding protest signs reading 'People over profit. No data center here.' and 'Brightwood United.'"
-            className="w-full max-w-[640px] h-auto"
-            style={{
-              filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.45)) brightness(1.08) contrast(1.05)"
-            }}
-          />
+          <div className="lg:col-span-5 flex justify-center lg:justify-end items-center">
+            <img
+              src="/protesters.png"
+              alt="Community members holding protest signs reading 'People over profit. No data center here.' and 'Brightwood United.'"
+              className="w-full max-w-[640px] h-auto"
+              style={{
+                filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.45)) brightness(1.08) contrast(1.05)"
+              }}
+            />
           </div>
+        </div>
 
         {/* Minimal scroll cue */}
         <button 
