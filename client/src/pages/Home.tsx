@@ -423,54 +423,86 @@ export default function Home() {
       {/* By The Numbers — 50/50 split: data on left, embedded video on right */}
       <section className="relative py-20 sm:py-24 px-6 sm:px-10 lg:px-16 border-y" style={{ background: "rgba(7,14,7,0.55)", borderColor: "rgba(201,162,39,0.18)" }}>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* LEFT: data side */}
-          <div>
-            <h2 className="text-4xl sm:text-5xl lg:text-[60px] tracking-[-0.04em] leading-[1.02] mb-7" style={{ fontFamily: "'Manrope', system-ui, sans-serif", color: "#f0e8d0", fontWeight: 800 }}>
-              Nobody asked you<br />
-              to <span style={{ color: GOLD, fontWeight: 800 }}>pay&nbsp;for&nbsp;this.</span>
-            </h2>
-            <p className="text-base sm:text-lg leading-[1.65] mb-12 max-w-md" style={{ color: "rgba(232,219,181,0.82)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
-              Big Tech's AI buildout is the largest fossil-fueled infrastructure project of the decade. The bill is being slid under your door.
-            </p>
-
-            {/* HERO stat — oversize, on its own */}
-            <div className="pb-10 mb-10">
-              <div className="flex items-baseline gap-5">
-                <div className="relative">
-                  <div className="text-[96px] sm:text-[120px] lg:text-[148px] leading-[0.88] tracking-[-0.055em]" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: GOLD, fontWeight: 500 }}>
-                    {STATS[3].value}
-                  </div>
-                  <svg aria-hidden="true" width="44" height="44" viewBox="0 0 60 60" style={{ position: "absolute", right: "-36px", top: "-10px" }}>
-                    <g stroke={GOLD} strokeWidth="1.8" strokeLinecap="round" opacity="0.9">
-                      <line x1="30" y1="6" x2="30" y2="22" />
-                      <line x1="30" y1="38" x2="30" y2="54" />
-                      <line x1="6" y1="30" x2="22" y2="30" />
-                      <line x1="38" y1="30" x2="54" y2="30" />
-                      <line x1="12" y1="12" x2="22" y2="22" />
-                      <line x1="38" y1="38" x2="48" y2="48" />
-                      <line x1="48" y1="12" x2="38" y2="22" />
-                      <line x1="12" y1="48" x2="22" y2="38" />
-                    </g>
-                  </svg>
+          {/* LEFT: stylized invoice card — 'the bill is being slid under your door' literal */}
+          <div className="relative">
+            <div 
+              className="relative" 
+              style={{ 
+                background: "#f4ead8",
+                color: "#1a1a1a",
+                transform: "rotate(-1.4deg)",
+                boxShadow: "0 24px 70px -16px rgba(0,0,0,0.65), 0 8px 20px -4px rgba(0,0,0,0.4)",
+                padding: "36px 36px 28px",
+                fontFamily: "'Manrope', system-ui, sans-serif"
+              }}
+            >
+              {/* Header — STATEMENT + reference numbers */}
+              <div className="flex items-start justify-between mb-6 pb-5 border-b-2" style={{ borderColor: "#1a1a1a" }}>
+                <div>
+                  <div className="text-[28px] sm:text-[32px] font-extrabold leading-none tracking-tight">STATEMENT</div>
+                  <div className="text-[10px] mt-2 uppercase tracking-[0.2em] opacity-60" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>Itemized cost · Stop Big Data</div>
                 </div>
-                <div className="text-[14px] sm:text-[15px] leading-[1.5] max-w-[22ch] pb-2" style={{ color: "rgba(232,219,181,0.78)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
-                  {STATS[3].label}.
+                <div className="text-right text-[10px] uppercase tracking-[0.2em] opacity-60 leading-relaxed" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>
+                  <div>NO. 2026 / 01</div>
+                  <div>ISSUED MAY 2026</div>
                 </div>
               </div>
-            </div>
 
-            {/* Supporting 3 stats — smaller, set side by side with hairline rules */}
-            <div className="grid grid-cols-3 gap-x-4 sm:gap-x-6">
-              {[STATS[0], STATS[1], STATS[2]].map((stat, i) => (
-                <div key={i} className={i > 0 ? "pl-4 sm:pl-6 border-l" : ""} style={i > 0 ? { borderColor: "rgba(201,162,39,0.18)" } : {}} data-testid={`stat-item-${i}`}>
-                  <div className="text-[40px] sm:text-[48px] lg:text-[56px] leading-[0.95] mb-2 tracking-[-0.04em]" style={{ fontFamily: "'Manrope', system-ui, sans-serif", color: GOLD, fontWeight: 800 }}>
-                    {stat.value}
+              {/* Bill to row */}
+              <div className="flex items-baseline gap-5 mb-7">
+                <div className="text-[10px] uppercase tracking-[0.2em] opacity-60 w-16 shrink-0" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>Bill to</div>
+                <div className="text-[18px] sm:text-[22px] font-bold">American ratepayers, communities, and aquifers.</div>
+              </div>
+
+              {/* Column headers */}
+              <div className="flex justify-between text-[9px] uppercase tracking-[0.2em] opacity-60 pb-2 border-b border-dashed" style={{ fontFamily: "'IBM Plex Mono', monospace", borderColor: "rgba(26,26,26,0.35)" }}>
+                <div>Item / Description</div>
+                <div>Amount</div>
+              </div>
+
+              {/* Line items */}
+              <div>
+                <div className="flex justify-between items-center gap-4 py-4 border-b border-dashed" style={{ borderColor: "rgba(26,26,26,0.22)" }}>
+                  <div className="text-[13px] sm:text-[14px] leading-snug max-w-[60%]">
+                    Ratepayer-funded grid upgrades<br/>
+                    <span className="opacity-55 text-[12px]">that Big Tech isn't paying for</span>
                   </div>
-                  <div className="text-[12px] sm:text-[13px] leading-[1.45]" style={{ color: "rgba(232,219,181,0.7)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
-                    {stat.label}
-                  </div>
+                  <div className="text-[44px] sm:text-[60px] font-black leading-none tracking-tight whitespace-nowrap">$50B</div>
                 </div>
-              ))}
+
+                <div className="flex justify-between items-center gap-4 py-4 border-b border-dashed" style={{ borderColor: "rgba(26,26,26,0.22)" }}>
+                  <div className="text-[13px] sm:text-[14px] leading-snug max-w-[60%]">
+                    U.S. electricity already consumed by data centers
+                  </div>
+                  <div className="text-[36px] sm:text-[48px] font-black leading-none tracking-tight whitespace-nowrap">3.5%</div>
+                </div>
+
+                <div className="flex justify-between items-center gap-4 py-4 border-b border-dashed" style={{ borderColor: "rgba(26,26,26,0.22)" }}>
+                  <div className="text-[13px] sm:text-[14px] leading-snug max-w-[60%]">
+                    Year AI data centers hit 10% of U.S. power
+                  </div>
+                  <div className="text-[36px] sm:text-[48px] font-black leading-none tracking-tight whitespace-nowrap">2030</div>
+                </div>
+
+                <div className="flex justify-between items-center gap-4 py-4 border-b border-dashed" style={{ borderColor: "rgba(26,26,26,0.22)" }}>
+                  <div className="text-[13px] sm:text-[14px] leading-snug max-w-[60%]">
+                    Gallons of water consumed<br/>daily by 2027
+                  </div>
+                  <div className="text-[36px] sm:text-[48px] font-black leading-none tracking-tight whitespace-nowrap">6.6B</div>
+                </div>
+              </div>
+
+              {/* Total */}
+              <div className="mt-5 pt-5 border-t-2 flex justify-between items-baseline" style={{ borderColor: "#1a1a1a" }}>
+                <div className="text-[12px] sm:text-[14px] font-bold uppercase tracking-[0.18em]" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>TOTAL DUE</div>
+                <div className="text-[60px] sm:text-[88px] font-black leading-none tracking-tighter">YOU</div>
+              </div>
+
+              {/* Footer */}
+              <div className="mt-6 pt-4 border-t border-dashed flex items-center justify-between gap-4" style={{ borderColor: "rgba(26,26,26,0.35)" }}>
+                <div className="text-[10px] uppercase tracking-[0.2em] opacity-55" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>Nobody asked you to pay for this.</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] opacity-55" style={{ fontFamily: "'IBM Plex Mono', monospace" }}>Pg. 1 of 1</div>
+              </div>
             </div>
           </div>
 
