@@ -358,7 +358,7 @@ export default function Home() {
         <div className="relative z-10 flex-1 grid grid-cols-1 md:grid-cols-12 gap-y-10 gap-x-10 lg:gap-x-16 items-end py-10 lg:py-14">
           <div className="md:col-span-8">
             <h1 
-              className="text-[60px] sm:text-[88px] lg:text-[132px] xl:text-[148px] leading-[0.92] tracking-[-0.035em]" 
+              className="text-[52px] sm:text-[72px] md:text-[80px] lg:text-[96px] xl:text-[108px] leading-[0.94] tracking-[-0.03em]" 
               style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}
             >
               Is <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 500 }}>Big Data</em><br />
@@ -419,61 +419,55 @@ export default function Home() {
         </button>
       </section>
 
-      {/* By The Numbers — editorial stats spread with video bg */}
-      <section className="relative py-20 sm:py-24 px-4 border-y overflow-hidden" style={{ borderColor: "rgba(201,162,39,0.18)" }}>
-        {/* Background video — Power Shift Project cover */}
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-          style={{ opacity: 0.28, filter: "saturate(0.7) contrast(1.05)" }}
-          aria-hidden="true"
-        >
-          <source src="/cover-photo-ig.mp4" type="video/mp4" />
-        </video>
-        {/* Dark gradient overlay so editorial text + numbers stay readable */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(7,14,7,0.92) 0%, rgba(7,14,7,0.78) 35%, rgba(7,14,7,0.85) 70%, rgba(7,14,7,0.94) 100%)" }} />
-        <div className="relative z-10 max-w-7xl mx-auto">
-          {/* Section header — eyebrow + headline + supporting sentence on the right */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-y-6 gap-x-10 mb-14 sm:mb-16 pb-10 sm:pb-12" style={{ borderBottom: "1px solid rgba(201,162,39,0.18)" }}>
-            <div className="md:col-span-7">
-              <div className="font-mono text-[11px] uppercase mb-4 inline-flex items-center gap-3" style={{ color: GOLD, opacity: 0.85, letterSpacing: "0.32em" }}>
-                <span style={{ display: "inline-block", width: 24, height: 1, background: GOLD, opacity: 0.55 }} />
-                By The Numbers
-              </div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl tracking-[-0.02em] leading-[1.04]" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}>
-                The <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 400 }}>cost</em> of inaction.
-              </h2>
+      {/* By The Numbers — 50/50 split: data on left, embedded video on right */}
+      <section className="relative py-20 sm:py-24 px-6 sm:px-10 lg:px-16 border-y" style={{ background: "rgba(7,14,7,0.55)", borderColor: "rgba(201,162,39,0.18)" }}>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* LEFT: data side */}
+          <div>
+            <div className="font-mono text-[11px] uppercase mb-5 inline-flex items-center gap-3" style={{ color: GOLD, opacity: 0.85, letterSpacing: "0.32em" }}>
+              <span style={{ display: "inline-block", width: 24, height: 1, background: GOLD, opacity: 0.55 }} />
+              By The Numbers
             </div>
-            <div className="md:col-span-5 md:pt-3">
-              <p className="text-base sm:text-lg leading-[1.65]" style={{ color: "rgba(232,219,181,0.72)" }}>
-                Big Tech's AI buildout is the largest fossil-fueled infrastructure project of the decade. Here is what is at stake.
-              </p>
-            </div>
-          </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-[64px] tracking-[-0.025em] leading-[1.02] mb-6" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}>
+              The <em style={{ color: GOLD, fontStyle: "italic", fontWeight: 400 }}>cost</em> of inaction.
+            </h2>
+            <p className="text-base sm:text-lg leading-[1.65] mb-10 max-w-md" style={{ color: "rgba(232,219,181,0.78)" }}>
+              Big Tech's AI buildout is the largest fossil-fueled infrastructure project of the decade. Here is what is at stake.
+            </p>
 
-          {/* Stats — 3-column editorial grid with vertical rules */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-14 gap-x-10 lg:gap-x-14">
-            {STATS.map((stat, i) => {
-              const showLeftRule = (i % 3 !== 0);
-              return (
-                <div 
-                  key={i} 
-                  className={showLeftRule ? "sm:pl-10 sm:border-l" : ""}
-                  style={showLeftRule ? { borderColor: "rgba(201,162,39,0.18)" } : {}}
-                  data-testid={`stat-item-${i}`}
-                >
-                  <div className="text-[72px] sm:text-[88px] lg:text-[104px] leading-[0.95] mb-4 tracking-[-0.035em]" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: GOLD, fontWeight: 500 }}>
+            {/* 4 key stats in a 2x2 grid */}
+            <div className="grid grid-cols-2 gap-y-10 gap-x-6 sm:gap-x-10 pt-8 border-t" style={{ borderColor: "rgba(201,162,39,0.18)" }}>
+              {STATS.slice(0, 4).map((stat, i) => (
+                <div key={i} data-testid={`stat-item-${i}`}>
+                  <div className="text-[56px] sm:text-[64px] lg:text-[80px] leading-[0.95] mb-3 tracking-[-0.03em]" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: GOLD, fontWeight: 500 }}>
                     {stat.value}
                   </div>
-                  <div className="text-[15px] sm:text-base leading-[1.55] max-w-[26ch]" style={{ color: "rgba(232,219,181,0.78)" }}>
+                  <div className="text-[13px] sm:text-sm leading-[1.55]" style={{ color: "rgba(232,219,181,0.78)" }}>
                     {stat.label}
                   </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT: embedded video */}
+          <div className="relative">
+            <div className="relative rounded-sm overflow-hidden border" style={{ borderColor: "rgba(201,162,39,0.22)", boxShadow: "0 20px 60px -20px rgba(0,0,0,0.7)" }}>
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                className="block w-full h-auto"
+                style={{ aspectRatio: "1080 / 1350" }}
+              >
+                <source src="/cover-photo-ig.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div className="font-mono text-[10px] uppercase mt-4 inline-flex items-center gap-2" style={{ color: "rgba(232,219,181,0.55)", letterSpacing: "0.28em" }}>
+              <span style={{ display: "inline-block", width: 16, height: 1, background: "rgba(232,219,181,0.4)" }} />
+              The Power Shift Project · Cover
+            </div>
           </div>
         </div>
       </section>
