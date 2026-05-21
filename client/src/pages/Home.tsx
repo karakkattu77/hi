@@ -280,7 +280,6 @@ export default function Home() {
   const [mapZoom, setMapZoom] = useState(4);
   const [activeCategory, setActiveCategory] = useState<NationwideCategory>("federal");
   
-  const federalRef = useRef<HTMLDivElement>(null);
   const mapSectionRef = useRef<HTMLDivElement>(null);
 
   const scrollTo = (ref: React.RefObject<HTMLDivElement>) => {
@@ -306,12 +305,11 @@ export default function Home() {
     <div className="min-h-screen text-foreground" style={{ background: "hsl(120,22%,8%)" }}>
       <Navbar 
         links={[
-          { label: "Nationwide Actions", action: () => scrollTo(federalRef) },
           { label: "Resource Hub", href: "/resource-hub" },
           { label: "Declaration", href: "/declaration" },
           { label: "Join Today", href: "/newsletter" },
         ]} 
-        onActNow={() => scrollTo(federalRef)} 
+        onActNow={() => scrollTo(mapSectionRef)} 
       />
 
       {/* Hero — Habitline-style: centered, sans, floating cards, dark+gold */}
@@ -745,83 +743,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Nationwide Actions */}
-      <section ref={federalRef} id="nationwide-actions" className="py-20 px-4 bg-black/20 border-t" style={{ borderColor: "rgba(201,162,39,0.15)" }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-10 text-center max-w-3xl mx-auto">
-            <div className="text-xs font-mono uppercase tracking-widest mb-2" style={{ color: GOLD }}>National Campaign</div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif" }}>
-              Demand Federal Oversight
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Data centers currently operate in a regulatory vacuum. Join thousands of Americans demanding transparency, water protections, and clean energy standards from our leaders.
-            </p>
-          </div>
-
-          {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {NATIONWIDE_CATEGORIES.map((ctg) => {
-              const Icon = CATEGORY_ICONS[ctg.id];
-              return (
-                <button 
-                  key={ctg.id} 
-                  onClick={() => setActiveCategory(ctg.id)}
-                  className="flex items-center gap-2 px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider transition-all border"
-                  style={{ 
-                    background: activeCategory === ctg.id ? "rgba(201,162,39,0.12)" : "transparent",
-                    borderColor: activeCategory === ctg.id ? GOLD : "rgba(201,162,39,0.25)",
-                    color: activeCategory === ctg.id ? GOLD : "rgba(232,219,181,0.5)",
-                  }}
-                  data-testid={`category-tab-${ctg.id}`}
-                >
-                  <Icon className="w-4 h-4" />
-                  {ctg.label}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Active category description */}
-          <div className="mb-6 p-4 rounded-md border" style={{ background: "rgba(201,162,39,0.06)", borderColor: "rgba(201,162,39,0.2)" }}>
-            <div className="flex items-start gap-3">
-              {(() => {
-                const Icon = CATEGORY_ICONS[activeCategory];
-                return <Icon className="w-5 h-5 mt-0.5 shrink-0" style={{ color: GOLD }} />;
-              })()}
-              <p className="text-sm text-muted-foreground leading-relaxed">{activeCtg.description}</p>
-            </div>
-          </div>
-
-          {/* Action cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredActions.map((action) => (
-              <a 
-                key={action.id} 
-                href={action.url} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="block rounded-md p-5 hover-elevate group"
-                style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(201,162,39,0.15)" }}
-                data-testid={`nationwide-action-${action.id}`}
-              >
-                <div className="flex items-center gap-2 mb-3" style={{ color: GOLD }}>
-                  <div className="w-8 h-8 rounded-md flex items-center justify-center shrink-0" style={{ background: "rgba(201,162,39,0.12)", border: "1px solid rgba(201,162,39,0.25)" }}>
-                    <ActionTypeIcon type={action.type} />
-                  </div>
-                  <span className="text-xs font-mono uppercase tracking-wide"><ActionTypeLabel type={action.type} /></span>
-                </div>
-                <h3 className="font-bold text-sm mb-2 leading-snug" style={{ color: "#e8dbb5" }}>{action.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed mb-3">{action.description}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-muted-foreground">{action.target}</span>
-                  <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-amber-400 transition-colors" />
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-20 px-4 text-center relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,162,39,0.06) 0%, transparent 70%)" }} />
@@ -836,9 +757,7 @@ export default function Home() {
             <Button size="lg" className="text-base px-8" style={{ background: GOLD, color: FOREST }} onClick={() => scrollTo(mapSectionRef)} data-testid="button-cta-map">
               Find Your Local Project <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-            <Button size="lg" variant="outline" className="text-base px-8 border-amber-800/40 text-foreground" onClick={() => scrollTo(federalRef)} data-testid="button-cta-nationwide">
-              Nationwide Actions
-            </Button>
+            
           </div>
         </div>
       </section>
