@@ -314,100 +314,128 @@ export default function Home() {
         onActNow={() => scrollTo(federalRef)} 
       />
 
-      {/* Hero — stripped editorial masthead with stronger painterly green bg */}
-      <section className="relative min-h-[82vh] flex flex-col px-6 sm:px-10 lg:px-16 overflow-hidden">
-        {/* Painterly green hero background — layered, no visible edges */}
-        {/* 1. Dark forest base + green gradients */}
+      {/* Hero — Habitline-style: centered, sans, floating cards, dark+gold */}
+      <section className="relative min-h-[88vh] flex flex-col items-center justify-center px-6 sm:px-10 lg:px-16 overflow-hidden">
+        {/* Painterly green hero background */}
         <div 
           className="absolute inset-0" 
           style={{ 
             background: `radial-gradient(ellipse 70% 60% at 20% 28%, hsla(95, 32%, 18%, 0.85) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 82% 18%, hsla(78, 30%, 16%, 0.7) 0%, transparent 55%), linear-gradient(165deg, hsla(108, 28%, 9%, 1) 0%, hsla(100, 30%, 5%, 1) 100%)` 
           }} 
         />
-        {/* 2. Globe — full-bleed, low opacity, positioned so planet sits bottom-center */}
+        {/* Globe — full-bleed at low opacity */}
         <img 
           src="/globe-bg.png" 
           alt="" 
           className="absolute inset-0 w-full h-full object-cover pointer-events-none" 
           style={{ 
             objectPosition: "center 75%",
-            opacity: 0.45,
+            opacity: 0.4,
             filter: "saturate(0.55) brightness(0.7) contrast(1.1)",
             mixBlendMode: "lighten"
           }} 
         />
-        {/* 3. Dark bottom vignette so text reads cleanly over the globe */}
+        {/* Bottom vignette */}
         <div 
           className="absolute inset-0 pointer-events-none" 
           style={{ background: "linear-gradient(180deg, transparent 0%, transparent 40%, hsla(110, 30%, 4%, 0.55) 100%)" }} 
         />
-        {/* 4. Painterly grain overlay */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.16, mixBlendMode: "overlay" }} xmlns="http://www.w3.org/2000/svg">
+        {/* Painterly grain overlay */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.14, mixBlendMode: "overlay" }} xmlns="http://www.w3.org/2000/svg">
           <filter id="hero-grain"><feTurbulence type="fractalNoise" baseFrequency="0.78" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0"/></filter>
           <rect width="100%" height="100%" filter="url(#hero-grain)"/>
         </svg>
 
-        {/* Main composition — headline left, subhead+CTA boxes right */}
-        <div className="relative z-10 flex-1 grid grid-cols-1 md:grid-cols-12 gap-y-10 gap-x-10 lg:gap-x-16 items-start pt-14 sm:pt-16 lg:pt-20 pb-10">
-          <div className="md:col-span-8">
-            <h1 
-              className="text-[56px] sm:text-[72px] md:text-[84px] lg:text-[100px] xl:text-[116px] leading-[0.96] tracking-[-0.04em]" 
-              style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}
+        {/* Floating LIVE badge — top-left corner, Habitline-style pill */}
+        <div className="hero-eyebrow hidden md:flex absolute top-10 left-10 lg:left-16 z-20 items-center gap-2.5 px-4 py-2 rounded-full backdrop-blur-md" 
+          style={{ background: "rgba(15,25,15,0.7)", border: "1px solid rgba(201,162,39,0.3)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+          <span className="live-dot" style={{ background: GOLD }} aria-hidden="true" />
+          <span className="text-[11px] font-medium" style={{ color: "rgba(232,219,181,0.85)", letterSpacing: "0.04em" }}>
+            Stop Big Data <span style={{ color: "rgba(232,219,181,0.5)" }}>· A National Campaign</span>
+          </span>
+        </div>
+
+        {/* Centered hero content */}
+        <div className="relative z-10 max-w-4xl mx-auto text-center py-20 lg:py-24">
+          <h1 
+            className="text-[52px] sm:text-[68px] md:text-[80px] lg:text-[96px] xl:text-[108px] leading-[1.02] tracking-[-0.04em] mb-7" 
+            style={{ fontFamily: "'Manrope', system-ui, sans-serif", color: "#f0e8d0", fontWeight: 800 }}
+          >
+            <span className="hero-line hero-line-1 block">Is <span style={{ color: GOLD }}>Big&nbsp;Data</span> coming</span>
+            <span className="hero-line hero-line-2 block">to your <span style={{ color: GOLD }}>backyard</span>?</span>
+          </h1>
+
+          <p className="hero-rail text-[16px] sm:text-[18px] leading-[1.6] max-w-2xl mx-auto mb-10" style={{ color: "rgba(232,219,181,0.78)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+            Big Tech is building hundreds of AI data centers — powered by fossil fuels, draining water supplies, and displacing communities. All without your consent.{" "}
+            <strong style={{ color: "#f0e8d0", fontWeight: 600 }}>Together, we can stop it.</strong>
+          </p>
+
+          <div className="hero-rail flex flex-wrap items-center justify-center gap-3">
+            <button 
+              onClick={() => scrollTo(mapSectionRef)}
+              className="shimmer-cta inline-flex items-center gap-2 px-7 py-4 transition-all hover:opacity-90" 
+              style={{ background: GOLD, color: FOREST, borderRadius: "999px", fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 600, fontSize: "15px" }}
+              data-testid="button-hero-map"
             >
-              <span className="hero-line hero-line-1 block">Is <span style={{ color: GOLD, fontWeight: 700 }}>Big&nbsp;Data</span></span>
-              <span className="hero-line hero-line-2 block" style={{ fontWeight: 400, color: "rgba(240,232,208,0.85)" }}>coming to your</span>
-              <span className="hero-line hero-line-3 block" style={{ fontWeight: 700 }}>backyard?</span>
-            </h1>
-          </div>
-
-          <div className="md:col-span-4 max-w-sm hero-rail">
-            <p className="text-[15px] sm:text-base leading-[1.7] mb-7" style={{ color: "rgba(232,219,181,0.85)" }}>
-              Big Tech is building hundreds of AI data centers, powered by fossil fuels, draining water supplies, and displacing communities. All without your consent.{" "}
-              <strong style={{ color: "#f0e8d0", fontWeight: 500 }}>Together, we can stop it.</strong>
-            </p>
-
-            {/* Two equal CTA boxes — stacked */}
-            <div className="grid grid-cols-1 gap-3">
-              <button 
-                onClick={() => scrollTo(mapSectionRef)}
-                className="shimmer-cta text-left p-5 transition-all hover:opacity-90 group" 
-                style={{ background: GOLD, color: FOREST, borderRadius: "999px" }}
-                data-testid="button-hero-map"
-              >
-                <div className="font-mono text-[10px] uppercase mb-2 opacity-70" style={{ letterSpacing: "0.24em" }}>
-                  01 · Local
-                </div>
-                <div className="text-[18px] flex items-center justify-between gap-3 leading-tight" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", fontWeight: 500 }}>
-                  Find Projects Near You
-                  <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
-                </div>
-              </button>
-              <button 
-                onClick={() => scrollTo(federalRef)}
-                className="text-left p-5 transition-all hover:bg-white/[0.03] border group" 
-                style={{ background: "transparent", color: "#f0e8d0", borderColor: "rgba(201,162,39,0.45)", borderRadius: "999px" }}
-                data-testid="button-hero-federal"
-              >
-                <div className="font-mono text-[10px] uppercase mb-2" style={{ letterSpacing: "0.24em", color: GOLD, opacity: 0.75 }}>
-                  02 · National
-                </div>
-                <div className="text-[18px] flex items-center justify-between gap-3 leading-tight" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", fontWeight: 500 }}>
-                  Take Nationwide Action
-                  <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
-                </div>
-              </button>
-            </div>
+              Find Projects Near You
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button 
+              onClick={() => scrollTo(federalRef)}
+              className="inline-flex items-center gap-2 px-7 py-4 transition-all hover:bg-white/[0.04] border" 
+              style={{ background: "transparent", color: "#f0e8d0", borderColor: "rgba(201,162,39,0.45)", borderRadius: "999px", fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 600, fontSize: "15px" }}
+              data-testid="button-hero-federal"
+            >
+              Take Nationwide Action
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
-        {/* Minimal scroll cue at bottom */}
+        {/* Floating "Today's Featured Fight" card — bottom-right, Habitline-style UI card */}
+        <button
+          onClick={() => {
+            const target = DATACENTERS[0];
+            handleMarkerClick(target);
+            scrollTo(mapSectionRef);
+          }}
+          className="hidden lg:flex hero-scroll absolute bottom-10 right-10 xl:right-16 z-20 max-w-[320px] flex-col items-start text-left rounded-2xl p-5 backdrop-blur-md transition-all hover:-translate-y-1"
+          style={{ 
+            background: "rgba(15,25,15,0.85)",
+            border: "1px solid rgba(201,162,39,0.25)",
+            boxShadow: "0 16px 50px -12px rgba(0,0,0,0.7)",
+            fontFamily: "'Manrope', system-ui, sans-serif"
+          }}
+          data-testid="card-featured-fight"
+        >
+          <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center justify-center w-7 h-7 rounded-full" style={{ background: GOLD }}>
+              <AlertTriangle className="w-3.5 h-3.5" style={{ color: FOREST }} />
+            </div>
+            <div className="text-[10px] font-semibold uppercase" style={{ color: GOLD, letterSpacing: "0.16em" }}>
+              Today's Featured Fight
+            </div>
+          </div>
+          <h3 className="text-[18px] font-bold mb-1.5 leading-tight" style={{ color: "#f0e8d0" }}>
+            {DATACENTERS[0].name.replace(/^Microsoft\s/, '')}
+          </h3>
+          <p className="text-[12px] mb-4 leading-snug" style={{ color: "rgba(232,219,181,0.65)" }}>
+            {DATACENTERS[0].location}
+          </p>
+          <div className="flex items-center gap-1.5 text-[12px] font-semibold pt-3 border-t w-full" style={{ color: GOLD, borderColor: "rgba(201,162,39,0.2)" }}>
+            View on the map
+            <ArrowRight className="w-3 h-3" />
+          </div>
+        </button>
+
+        {/* Minimal scroll cue */}
         <button 
           onClick={() => scrollTo(mapSectionRef)}
-          className="hero-scroll relative z-10 self-start font-mono text-[10px] uppercase inline-flex items-center gap-2 pb-8 transition-opacity hover:opacity-100" 
-          style={{ color: "rgba(232,219,181,0.5)", letterSpacing: "0.28em" }}
+          className="hero-scroll absolute bottom-8 left-1/2 -translate-x-1/2 z-10 inline-flex flex-col items-center gap-1 transition-opacity hover:opacity-100" 
+          style={{ color: "rgba(232,219,181,0.45)", fontFamily: "'Manrope', system-ui, sans-serif" }}
           data-testid="button-scroll-down"
         >
-          Scroll
+          <span className="text-[10px] font-medium uppercase" style={{ letterSpacing: "0.22em" }}>Scroll</span>
           <ChevronDown className="w-3 h-3" />
         </button>
       </section>
@@ -417,11 +445,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* LEFT: data side */}
           <div>
-            <h2 className="text-4xl sm:text-5xl lg:text-[60px] tracking-[-0.035em] leading-[1.02] mb-7" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: "#f0e8d0", fontWeight: 500 }}>
+            <h2 className="text-4xl sm:text-5xl lg:text-[60px] tracking-[-0.04em] leading-[1.02] mb-7" style={{ fontFamily: "'Manrope', system-ui, sans-serif", color: "#f0e8d0", fontWeight: 800 }}>
               Nobody asked you<br />
-              to <em style={{ fontStyle: "italic", color: GOLD, fontWeight: 400 }}>pay&nbsp;for&nbsp;this.</em>
+              to <span style={{ color: GOLD, fontWeight: 800 }}>pay&nbsp;for&nbsp;this.</span>
             </h2>
-            <p className="text-base sm:text-lg leading-[1.65] mb-12 max-w-md" style={{ color: "rgba(232,219,181,0.82)" }}>
+            <p className="text-base sm:text-lg leading-[1.65] mb-12 max-w-md" style={{ color: "rgba(232,219,181,0.82)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
               Big Tech's AI buildout is the largest fossil-fueled infrastructure project of the decade. The bill is being slid under your door.
             </p>
 
@@ -431,7 +459,7 @@ export default function Home() {
                 <div className="text-[96px] sm:text-[120px] lg:text-[148px] leading-[0.88] tracking-[-0.055em]" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: GOLD, fontWeight: 500 }}>
                   {STATS[3].value}
                 </div>
-                <div className="text-[14px] sm:text-[15px] leading-[1.5] max-w-[22ch] pb-2" style={{ color: "rgba(232,219,181,0.78)" }}>
+                <div className="text-[14px] sm:text-[15px] leading-[1.5] max-w-[22ch] pb-2" style={{ color: "rgba(232,219,181,0.78)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
                   {STATS[3].label}.
                 </div>
               </div>
@@ -444,7 +472,7 @@ export default function Home() {
                   <div className="text-[40px] sm:text-[48px] lg:text-[56px] leading-[0.95] mb-2 tracking-[-0.035em]" style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif", color: GOLD, fontWeight: 500 }}>
                     {stat.value}
                   </div>
-                  <div className="text-[12px] sm:text-[13px] leading-[1.45]" style={{ color: "rgba(232,219,181,0.7)" }}>
+                  <div className="text-[12px] sm:text-[13px] leading-[1.45]" style={{ color: "rgba(232,219,181,0.7)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
                     {stat.label}
                   </div>
                 </div>
